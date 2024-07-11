@@ -1,0 +1,36 @@
+<!DOCTYPE html> 
+<html
+	xlmns:th="https://thymeleaf.org"
+	xlmns:layout="http://www.ultraraq.net.nz/thymeLeaf/Layout"> 
+
+<head> 
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+</head>	
+
+<body>
+	<form action="/user/userSave" th:object="${user}" method = "POST"> 
+	
+		<div class="form-group">
+              <label for="id">ID: </label>
+                  
+              <label for="nome">NOME: </label>
+			  
+			  <label for="setor">SETOR: </label>
+		      
+		      <label for="email">EMAIL: </label>
+		      
+		      <label for="senha">SENHA: </label>
+		
+		<button type="submit"> salvar</button>
+		<input type = text>
+	
+	</form>
+
+</body>
+
+
+
+</html>
