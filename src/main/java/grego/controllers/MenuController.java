@@ -20,7 +20,7 @@ public class MenuController {
 	
 	@GetMapping("/empresa/menu")
 	public String empMenu() {
-		return "HomeMenu/home"; 
+		return "EmpMenu/menu"; 
 	}
 }
 

@@ -1,11 +1,9 @@
 package grego.controllers;
 
-import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,11 +22,6 @@ public class EmpresaController {
 	@Autowired
 	private EmpresaRepository empRepository; 
 	
-	@GetMapping("/empMenu")
-	public String empMenu() {
-		return "HomeMenu/home"; 
-	}
-	
 	@PostMapping("/saveEmp")
 	public ResponseEntity<String> saveEmp(@RequestBody Empresa emp, BindingResult result) {
         if(result.hasErrors()) {
@@ -37,5 +30,9 @@ public class EmpresaController {
         empRepository.saveAndFlush(emp);
         return ResponseEntity.ok("Empresa criada com sucesso!");
     }
-	
+
+	@GetMapping("/listEmp")
+	public List<Empresa> listAll(){
+		return empRepository.findAll(); 
+	}
 }

@@ -1,11 +1,9 @@
 <!DOCTYPE html>
-<html lang="en"
-	  xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"> 
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grego</title>
+    <title>Cadastro de usuario</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -36,12 +34,16 @@
 <body>
 
 <div class="menu">
-    <p>GREGO COMERCIAL FOGÕES - MENU PRINCIPAL</p>
+    <a href="/home">Home</a>
 </div>
 
 <div class="content">
- 	<a th:href="@{/user/menu}">Cadastro de usuário</a>
-    <p>Cadastro de empresa: <a th:href="@{/empresa/menu}">abaaaa2</a></p>
+    <h1 id="home">Cadastrar</h1>
+    <a href="/empresa/cadastro">Cadastro </a>
+
+    <h1 id="about">Alterar</h1>
+    <p>Learn more about us in this section.</p>
 </div>
 
 </body>
+</html>
