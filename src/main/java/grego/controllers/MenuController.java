@@ -7,9 +7,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping
 public class MenuController {
-	
+
 	@GetMapping("/home")
 	public String acessMenu() {
+		return "HomeMenu/home";
+	}
+
+	@GetMapping("/user/menu")
+	public String userMenuForm() {
+		return "/UserMenu/menu";
+	}
+	
+	@GetMapping("/empresa/menu")
+	public String empMenu() {
 		return "HomeMenu/home"; 
 	}
 }
+
