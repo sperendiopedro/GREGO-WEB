@@ -4,6 +4,8 @@ import java.util.UUID;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -16,10 +18,10 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.UUID)
 	private UUID id;
 
-	@Column(nullable = true)
+	@Column(nullable = false)
 	private String nome;
 
-	@Column(nullable = true)
+	@Column(nullable = false)
 	private String setor;
 
 	@Column(nullable = false)
@@ -27,16 +29,20 @@ public class User {
 
 	@Column(nullable = false)
 	private String psswd;
+	
+    @Enumerated(EnumType.STRING)
+    @Column(nullable=false)
+	private UserRoles userRole; 
 
 	public User() {
 	}
 	
-	public User(String nome, String setor, String email, String psswd) {
-		super();
+	public User(String nome, String setor, String email, String psswd, UserRoles userRole) {
 		this.nome = nome;
 		this.setor = setor;
 		this.email = email;
 		this.psswd = psswd;
+		this.userRole=userRole; 
 	}
 
 	public UUID getId() {

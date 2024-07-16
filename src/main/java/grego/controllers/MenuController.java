@@ -22,5 +22,10 @@ public class MenuController {
 	public String empMenu() {
 		return "EmpMenu/menu"; 
 	}
+	
+	@GetMapping("/auth/register")
+	public String register() {
+		return "/UserMenu/cadastro"; 
+	}
 }
 
