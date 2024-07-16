@@ -85,4 +85,13 @@ public class User {
 		this.psswd = psswd;
 	}
 
+	public UserRoles getUserRole() {
+		return userRole;
+	}
+
+	public void setUserRole(UserRoles userRole) {
+		this.userRole = userRole;
+	}
+	
+	
 }

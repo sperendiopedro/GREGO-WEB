@@ -38,7 +38,7 @@ public class SecurityConfig {
     protected SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(authorize -> authorize
-                .requestMatchers("/home").permitAll()
+                .requestMatchers("/home").authenticated()
                 .requestMatchers("/authenticate/**").permitAll()
                 .requestMatchers(HttpMethod.POST, "/authenticate/saveUser").permitAll()
                 .anyRequest().permitAll())
@@ -48,7 +48,7 @@ public class SecurityConfig {
     }
 
     @Bean
-    public JwtDecoder jwtDecoder() {
+    protected JwtDecoder jwtDecoder() {
         return NimbusJwtDecoder.withPublicKey(pub).build();
     }
 
@@ -61,18 +61,10 @@ public class SecurityConfig {
 	}
 */
     @Bean
-    public PasswordEncoder passwordEncoder() {
+    protected PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 }
 
 
-
-/*
- * return http.csrf(csrf -> csrf.disable())
-		.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-		.authorizeHttpRequests(authorize->authorize.requestMatchers("/home", "/auth/**").permitAll()
-		.anyRequest().authenticated())
-		.build(); */ 
- 
 

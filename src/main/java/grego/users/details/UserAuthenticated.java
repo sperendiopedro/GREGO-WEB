@@ -9,7 +9,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import grego.users.models.User;
 import grego.users.models.UserRoles;
 
-public class UserDetails implements org.springframework.security.core.userdetails.UserDetails {
+public class UserAuthenticated implements org.springframework.security.core.userdetails.UserDetails {
 	
 	private static final long serialVersionUID = 1L;
 	private User user; 
@@ -17,8 +17,7 @@ public class UserDetails implements org.springframework.security.core.userdetail
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		if(this.roles == UserRoles.ADMIN) return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"), new SimpleGrantedAuthority("ROLE_USER")); 
-		else return List.of(new SimpleGrantedAuthority("ROLE_USER")); 
+		return List.of(()-> "read"); 
 	}
 
 	@Override
