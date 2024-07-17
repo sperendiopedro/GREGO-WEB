@@ -29,8 +29,10 @@ public class UFDController {
 	
 	@PostMapping("/saveUfd")
 	public ResponseEntity register(@RequestBody UFD ufd) {
-		if()
-		else ufdRepo.saveAndFlush(ufd); 
+		if(ufdRepo.findByNome(ufd.getNome()) != null) {
+			return new ResponseEntity("Usuario já existe", HttpStatus.BAD_REQUEST); 
+		}
+ 		ufdRepo.saveAndFlush(ufd); 
 		return ResponseEntity.ok("UFD Registrado"); 
 	}	
 	
@@ -38,7 +40,8 @@ public class UFDController {
 	public ResponseEntity update(@RequestBody UFD newUfd) {
 		if(newUfd.getId() == null) return new ResponseEntity("Id null", HttpStatus.BAD_REQUEST);
 		else {
-			ufdRepo.save(newUfd); 
+			if(newUfd.getNome() == null) {
+			}
 		}
 		return ResponseEntity.ok("UFD altered"); 
 	}
