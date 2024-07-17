@@ -28,9 +28,10 @@ import com.nimbusds.jose.jwk.source.ImmutableJWKSet;
 @EnableWebSecurity
 public class SecurityConfig {
 
- //   @Value("${jwt.private.key}")
- //   private RSAPrivateKey priv; 
-    @Value("${jwt.public.key}")
+	//@Value("${jwt.private.key}")
+	//private RSAPrivateKey priv; 
+    
+	@Value("${jwt.public.key}")
     private RSAPublicKey pub;
 
 
@@ -38,9 +39,6 @@ public class SecurityConfig {
     protected SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(authorize -> authorize
-                .requestMatchers("/home").authenticated()
-                .requestMatchers("/authenticate/**").permitAll()
-                .requestMatchers(HttpMethod.POST, "/authenticate/saveUser").permitAll()
                 .anyRequest().permitAll())
             .httpBasic(Customizer.withDefaults())
             .oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults()));
@@ -52,14 +50,14 @@ public class SecurityConfig {
         return NimbusJwtDecoder.withPublicKey(pub).build();
     }
 
-/*
-	@Bean
-	JwtEncoder jwtEncoder() {
-		var jwk = new RSAKey.Builder(pub).privateKey(priv).build();
-		var jwks = new ImmutableJWKSet<>(new JWKSet(jwk));
-		return new NimbusJwtEncoder(jwks); 
-	}
-*/
+
+	//@Bean
+	//JwtEncoder jwtEncoder() {
+		//var jwk = new RSAKey.Builder(pub).privateKey(priv).build();
+		//var jwks = new ImmutableJWKSet<>(new JWKSet(jwk));
+		//return new NimbusJwtEncoder(jwks); 
+	//}
+
     @Bean
     protected PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
