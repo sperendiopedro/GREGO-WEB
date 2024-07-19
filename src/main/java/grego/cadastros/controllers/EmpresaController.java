@@ -20,7 +20,7 @@ public class EmpresaController {
 	
 	@PostMapping("/saveEmp")
 	public ResponseEntity insert(@RequestBody Empresa empresa) {
-		if(empRepo.findByCnpj(empresa.getCnpj()) == null) {
+		if(empRepo.findByCnpj(empresa.getCnpj()) != null) {
 			return new ResponseEntity("Empresa com CNPJ existente", HttpStatus.BAD_REQUEST);
 		}
 		empRepo.saveAndFlush(empresa); 

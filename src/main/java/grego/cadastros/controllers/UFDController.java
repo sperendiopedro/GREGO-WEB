@@ -41,6 +41,7 @@ public class UFDController {
 		if(newUfd.getId() == null) return new ResponseEntity("Id null", HttpStatus.BAD_REQUEST);
 		else {
 			if(newUfd.getNome() == null) {
+				ufdRepo.saveAndFlush(newUfd); 
 			}
 		}
 		return ResponseEntity.ok("UFD altered"); 

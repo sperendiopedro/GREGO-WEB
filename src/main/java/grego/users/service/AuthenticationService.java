@@ -6,8 +6,9 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class AuthenticationService {
+	
 	@Autowired
-	private JwtService jwtService; 
+	private JWTService jwtService; 
 	
 	public String authenticate(Authentication auth) {
 			return jwtService.generateToken(auth); 

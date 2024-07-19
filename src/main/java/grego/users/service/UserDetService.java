@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import grego.users.repositories.UserRepository;
 
 @Service
-public class AuthorizationService implements UserDetailsService{
+public class UserDetService implements UserDetailsService{
 
 	@Autowired
 	private UserRepository userRepo; 
