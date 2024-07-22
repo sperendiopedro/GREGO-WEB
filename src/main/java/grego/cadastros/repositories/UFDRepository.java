@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import grego.cadastros.models.UFD;
 
 public interface UFDRepository extends JpaRepository<UFD, Long>{
-	UFD findByNome(String nome); 
+	UFD findBySigla(String sigla); 
 }

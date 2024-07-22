@@ -1,6 +1,9 @@
 package grego.cadastros.models;
 
+import java.io.Serializable;
 import java.util.Set;
+
+import org.hibernate.validator.constraints.Length;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -13,18 +16,24 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "TB0002_UFD")
-public class UFD {
+public class UFD implements Serializable {
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	@OneToMany(mappedBy = "ufd")
-	private Set<Empresa> empresa; 
+	private Set<Empresa> empresa;
 
+	@OneToMany(mappedBy= "ufd")
+	private Set<Fornecedor> fornec; 
+	
 	@Column(nullable = false)
 	private String nome;
 
 	@Column(nullable = false)
+	@Length(min = 2, max = 2)
 	private String sigla;
 
 	@Column(nullable = false)
