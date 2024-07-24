@@ -21,9 +21,9 @@ public class Empresa {
 	
 	@ManyToOne
 	@JoinColumn(
-				name="ufd_id", nullable=false
+				name="ufd_id_emp", nullable=false
 			)
-	private UFD ufd; 
+	private UFD ufd_emp; 
 	
 	@OneToMany(mappedBy = "emp")
 	private Set<Fornecedor> fornec; 
@@ -70,11 +70,11 @@ public class Empresa {
 	public Empresa() {
 	}
 	
-	public Empresa(Long id, UFD ufd, String razSoc, String nomeFant, String end, String bairro, String cep, String cnpj,
+	public Empresa(Long id, UFD ufd_emp, String razSoc, String nomeFant, String end, String bairro, String cep, String cnpj,
 			String inscrMun, String inscrEst, String telefone, String email, Double relSoc, Double nrCupom,
 			String obs) {
 		this.id = id;
-		this.ufd = ufd;
+		this.ufd_emp = ufd_emp;
 		this.razSoc = razSoc;
 		this.nomeFant = nomeFant;
 		this.end = end;
@@ -91,11 +91,11 @@ public class Empresa {
 	}
 
 	public UFD getUfd() {
-		return ufd;
+		return ufd_emp;
 	}
 
-	public void setUfd(UFD ufd) {
-		this.ufd = ufd;
+	public void setUfd(UFD ufd_emp) {
+		this.ufd_emp = ufd_emp;
 	}
 
 	public String getRazSoc() {

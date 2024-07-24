@@ -21,8 +21,8 @@ public class Fornecedor implements Serializable {
 	private static final long seialVersionUID = 1L;
 
 	@ManyToOne
-	@JoinColumn(name = "ufd_id", nullable = false)
-	private UFD ufd;
+	@JoinColumn(name = "ufd_id_fornec", nullable = false)
+	private UFD ufd_fornec;
 
 	@ManyToOne
 	@JoinColumn(name = "emp_id", nullable = false)
@@ -147,14 +147,14 @@ public class Fornecedor implements Serializable {
 	public Fornecedor() {
 	}
 
-	public Fornecedor(UFD ufd, Empresa emp, Long id, String razSoc, String nomeFant, String end, String bairro,
+	public Fornecedor(UFD ufd_fornec, Empresa emp, Long id, String razSoc, String nomeFant, String end, String bairro,
 			String cep, String municipio, String contato, String dep, Double tipoJF, String cnpj, String inscrEst,
 			String inscrMun, String telefone_1, String telefone_2, String telefone_3, String email_1, String email_2,
 			String email_3, String email, String desc_1, String desc_2, String desc_3, String desc_4, String desc_5,
 			String desc_6, Double diferen, Double rep_1, Double rep_2, Double rep_3, Double rep_4, String obs,
 			String plan_obs, boolean bloq, @Length(max = 1, min = 1) char crd_icms, Double pc_cr_icms_1,
 			Double pc_cr_icms_2, Double pc_cr_icms_3) {
-		this.ufd = ufd;
+		this.ufd_fornec = ufd_fornec;
 		this.emp = emp;
 		this.id = id;
 		this.razSoc = razSoc;
@@ -197,11 +197,11 @@ public class Fornecedor implements Serializable {
 	}
 
 	public UFD getUfd() {
-		return ufd;
+		return ufd_fornec;
 	}
 
-	public void setUfd(UFD ufd) {
-		this.ufd = ufd;
+	public void setUfd(UFD ufd_fornec) {
+		this.ufd_fornec = ufd_fornec;
 	}
 
 	public Empresa getEmp() {

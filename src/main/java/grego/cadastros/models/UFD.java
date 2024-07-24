@@ -23,10 +23,10 @@ public class UFD implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@OneToMany(mappedBy = "ufd")
+	@OneToMany(mappedBy = "ufd_emp")
 	private Set<Empresa> empresa;
 
-	@OneToMany(mappedBy= "ufd")
+	@OneToMany(mappedBy= "ufd_fornec")
 	private Set<Fornecedor> fornec; 
 	
 	@Column(nullable = false)
@@ -37,16 +37,16 @@ public class UFD implements Serializable {
 	private String sigla;
 
 	@Column(nullable = false)
-	private float aliqIcsm;
+	private Double aliqIcms;
 
 	public UFD() {
 	}
 
-	public UFD(Long id, String nome, String sigla, float aliqIcsm) {
+	public UFD(Long id, String nome, String sigla, Double aliqIcms) {
 		this.id = id;
 		this.nome = nome;
 		this.sigla = sigla;
-		this.aliqIcsm = aliqIcsm;
+		this.aliqIcms = aliqIcms;
 	}
 
 	public String getNome() {
@@ -65,16 +65,15 @@ public class UFD implements Serializable {
 		this.sigla = sigla;
 	}
 
-	public float getAliqIcsm() {
-		return aliqIcsm;
+	public Double getAliqIcms() {
+		return aliqIcms;
 	}
 
-	public void setAliqIcsm(float aliqIcsm) {
-		this.aliqIcsm = aliqIcsm;
+	public void setAliqIcms(Double aliqIcms) {
+		this.aliqIcms = aliqIcms;
 	}
 
 	public Long getId() {
 		return id;
 	}
-
 }
