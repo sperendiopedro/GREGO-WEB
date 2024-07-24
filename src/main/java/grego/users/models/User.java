@@ -30,14 +30,13 @@ public class User {
 	@Column(nullable = false)
 	private String psswd;
 	
-    @Enumerated(EnumType.STRING)
     @Column(nullable=false)
-	private UserRoles userRole; 
+	private String userRole; 
 
 	public User() {
 	}
 	
-	public User(String nome, String setor, String email, String psswd, UserRoles userRole) {
+	public User(String nome, String setor, String email, String psswd, String userRole) {
 		this.nome = nome;
 		this.setor = setor;
 		this.email = email;
@@ -85,11 +84,11 @@ public class User {
 		this.psswd = psswd;
 	}
 
-	public UserRoles getUserRole() {
+	public String getUserRole() {
 		return userRole;
 	}
 
-	public void setUserRole(UserRoles userRole) {
+	public void setUserRole(String userRole) {
 		this.userRole = userRole;
 	}
 	

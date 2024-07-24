@@ -43,6 +43,7 @@ public class UFDController {
 		if(ufdRepo.findBySigla(ufd.getSigla()) != null) {
 			return new ResponseEntity<>("Unidade Federal já existente", HttpStatus.BAD_REQUEST); 
 		}
+		ufd.setSigla(ufd.getSigla().toUpperCase());
  		ufdRepo.saveAndFlush(ufd); 
 		return ResponseEntity.ok("UFD Registrado"); 
 	}	
