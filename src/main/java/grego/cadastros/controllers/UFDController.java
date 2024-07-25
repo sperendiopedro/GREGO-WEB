@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -32,10 +33,12 @@ public class UFDController {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<List<UFD>> listById(@PathVariable Long id){
-		if(ufdRepo.findById(id) != null) return new ResponseEntity("UFD não encontrada!", HttpStatus.BAD_REQUEST); 
-		else ufdRepo.findById(id); 
-		return new ResponseEntity<>(HttpStatus.OK); 
+	public ResponseEntity<Optional<UFD>> listById(@PathVariable Long id) {
+	    Optional<UFD> data = ufdRepo.findById(id);
+	    if (data.isEmpty()) {
+	        return new ResponseEntity("Id não encontrado!", HttpStatus.BAD_REQUEST);
+	    }
+	    return new ResponseEntity<>(data, HttpStatus.OK);
 	}
 	
 	@PostMapping("/saveUfd")
@@ -58,7 +61,7 @@ public class UFDController {
 	            return new ResponseEntity<>("UFD não encontrada!", HttpStatus.BAD_REQUEST);
 	        }
 	        
-	        //think about a while condition to check the fieds
+	        //think about a while condition to check the fields
 	        UFD existingUfd = existingUfdOpt.get();
 	        if (newUfd.getNome() != null) existingUfd.setNome(newUfd.getNome());
 	        if (newUfd.getSigla() != null) existingUfd.setSigla(newUfd.getSigla());
