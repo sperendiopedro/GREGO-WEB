@@ -71,40 +71,37 @@ public class Fornecedor implements Serializable {
 	@Column(nullable = false)
 	private String telefone_1;
 
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private String telefone_2;
 
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private String telefone_3;
 
 	@Column(nullable = false)
 	private String email_1;
 
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private String email_2;
 
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private String email_3;
-
-	@Column(nullable = false)
-	private String email;
 
 	@Column(nullable = false)
 	private String desc_1;
 
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private String desc_2;
 
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private String desc_3;
 
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private String desc_4;
 
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private String desc_5;
 
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private String desc_6;
 
 	@Column(nullable = false)
@@ -113,13 +110,13 @@ public class Fornecedor implements Serializable {
 	@Column(nullable = false)
 	private Double rep_1;
 
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private Double rep_2;
 
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private Double rep_3;
 
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private Double rep_4;
 
 	@Column(nullable = false)
@@ -138,10 +135,10 @@ public class Fornecedor implements Serializable {
 	@Column(nullable = false)
 	private Double pc_cr_icms_1;
 
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private Double pc_cr_icms_2;
 
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private Double pc_cr_icms_3;
 
 	public Fornecedor() {
@@ -150,7 +147,7 @@ public class Fornecedor implements Serializable {
 	public Fornecedor(UFD ufd_fornec, Empresa emp, Long id, String razSoc, String nomeFant, String end, String bairro,
 			String cep, String municipio, String contato, String dep, Double tipoJF, String cnpj, String inscrEst,
 			String inscrMun, String telefone_1, String telefone_2, String telefone_3, String email_1, String email_2,
-			String email_3, String email, String desc_1, String desc_2, String desc_3, String desc_4, String desc_5,
+			String email_3, String desc_1, String desc_2, String desc_3, String desc_4, String desc_5,
 			String desc_6, Double diferen, Double rep_1, Double rep_2, Double rep_3, Double rep_4, String obs,
 			String plan_obs, boolean bloq, @Length(max = 1, min = 1) char crd_icms, Double pc_cr_icms_1,
 			Double pc_cr_icms_2, Double pc_cr_icms_3) {
@@ -175,7 +172,6 @@ public class Fornecedor implements Serializable {
 		this.email_1 = email_1;
 		this.email_2 = email_2;
 		this.email_3 = email_3;
-		this.email = email;
 		this.desc_1 = desc_1;
 		this.desc_2 = desc_2;
 		this.desc_3 = desc_3;
@@ -362,14 +358,6 @@ public class Fornecedor implements Serializable {
 
 	public void setEmail_3(String email_3) {
 		this.email_3 = email_3;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 	public String getDesc_1() {
