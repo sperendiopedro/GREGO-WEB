@@ -18,179 +18,178 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "TB004_FORNECEDOR")
 public class Fornecedor implements Serializable {
-	private static final long seialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@ManyToOne
-	@JoinColumn(name = "ufd_id_fornec", nullable = false)
-	private UFD ufd_fornec;
+    @ManyToOne
+    @JoinColumn(name = "ufd_id_fornec", nullable = false)
+    private UFD ufd_fornec;
 
-	@ManyToOne
-	@JoinColumn(name = "emp_id", nullable = false)
-	private Empresa emp;
+    @ManyToOne
+    @JoinColumn(name = "emp_id", nullable = false)
+    private Empresa emp;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	@Column(nullable = false)
-	private String razSoc;
+    @Column(nullable = false)
+    private String razSoc;
 
-	@Column(nullable = false)
-	private String nomeFant;
+    @Column(nullable = false)
+    private String nomeFant;
 
-	@Column(nullable = false)
-	private String end;
+    @Column(nullable = false)
+    private String end;
 
-	@Column(nullable = false)
-	private String bairro;
+    @Column(nullable = false)
+    private String bairro;
 
-	@Column(nullable = false)
-	private String cep;
+    @Column(nullable = false)
+    private String cep;
 
-	@Column(nullable = false)
-	private String municipio;
+    @Column(nullable = false)
+    private String municipio;
 
-	@Column(nullable = false)
-	private String contato;
+    @Column(nullable = false)
+    private String contato;
 
-	@Column(nullable = false)
-	private String dep;
+    @Column(nullable = false)
+    private String dep;
 
-	@Column(nullable = false)
-	private Double tipoJF;
+    @Column(nullable = false)
+    private Double tipoJF;
 
-	@Column(nullable = false)
-	private String cnpj;
+    @Column(nullable = false)
+    private String cnpj;
 
-	@Column(nullable = false)
-	private String inscrEst;
+    @Column(nullable = false)
+    private String inscrEst;
 
-	@Column(nullable = false)
-	private String inscrMun;
+    @Column(nullable = false)
+    private String inscrMun;
 
-	@Column(nullable = false)
-	private String telefone_1;
+    @Column(nullable = false)
+    private String telefone_1;
 
-	@Column(nullable = true)
-	private String telefone_2;
+    @Column(nullable = true)
+    private String telefone_2;
 
-	@Column(nullable = true)
-	private String telefone_3;
+    @Column(nullable = true)
+    private String telefone_3;
 
-	@Column(nullable = false)
-	private String email_1;
+    @Column(nullable = false)
+    private String email_1;
 
-	@Column(nullable = true)
-	private String email_2;
+    @Column(nullable = true)
+    private String email_2;
 
-	@Column(nullable = true)
-	private String email_3;
+    @Column(nullable = true)
+    private String email_3;
 
-	@Column(nullable = false)
-	private String desc_1;
+    @Column(nullable = false)
+    private String desc_1;
 
-	@Column(nullable = true)
-	private String desc_2;
+    @Column(nullable = true)
+    private String desc_2;
 
-	@Column(nullable = true)
-	private String desc_3;
+    @Column(nullable = true)
+    private String desc_3;
 
-	@Column(nullable = true)
-	private String desc_4;
+    @Column(nullable = true)
+    private String desc_4;
 
-	@Column(nullable = true)
-	private String desc_5;
+    @Column(nullable = true)
+    private String desc_5;
 
-	@Column(nullable = true)
-	private String desc_6;
+    @Column(nullable = true)
+    private String desc_6;
 
-	@Column(nullable = false)
-	private Double diferen;
+    @Column(nullable = false)
+    private Double diferen;
 
-	@Column(nullable = false)
-	private Double rep_1;
+    @Column(nullable = false)
+    private Double rep_1;
 
-	@Column(nullable = true)
-	private Double rep_2;
+    @Column(nullable = true)
+    private Double rep_2;
 
-	@Column(nullable = true)
-	private Double rep_3;
+    @Column(nullable = true)
+    private Double rep_3;
 
-	@Column(nullable = true)
-	private Double rep_4;
+    @Column(nullable = true)
+    private Double rep_4;
 
-	@Column(nullable = false)
-	private String obs;
-	
-	@Column(nullable = false)
-	private String plan_obs;
-	
-	@Column(nullable = false)
-	private boolean bloq;
-	
-	@Column(nullable = false)
-	@Length(max = 1 , min = 1)
-	private char crd_icms;
-	
-	@Column(nullable = false)
-	private Double pc_cr_icms_1;
+    @Column(nullable = false)
+    private String obs;
 
-	@Column(nullable = true)
-	private Double pc_cr_icms_2;
+    @Column(nullable = false)
+    private String plan_obs;
 
-	@Column(nullable = true)
-	private Double pc_cr_icms_3;
+    @Column(nullable = false)
+    private boolean bloq;
 
-	public Fornecedor() {
-	}
+    @Column(nullable = false)
+    @Length(max = 1, min = 1)
+    private String crd_icms;
 
-	public Fornecedor(UFD ufd_fornec, Empresa emp, Long id, String razSoc, String nomeFant, String end, String bairro,
-			String cep, String municipio, String contato, String dep, Double tipoJF, String cnpj, String inscrEst,
-			String inscrMun, String telefone_1, String telefone_2, String telefone_3, String email_1, String email_2,
-			String email_3, String desc_1, String desc_2, String desc_3, String desc_4, String desc_5,
-			String desc_6, Double diferen, Double rep_1, Double rep_2, Double rep_3, Double rep_4, String obs,
-			String plan_obs, boolean bloq, @Length(max = 1, min = 1) char crd_icms, Double pc_cr_icms_1,
-			Double pc_cr_icms_2, Double pc_cr_icms_3) {
-		this.ufd_fornec = ufd_fornec;
-		this.emp = emp;
-		this.id = id;
-		this.razSoc = razSoc;
-		this.nomeFant = nomeFant;
-		this.end = end;
-		this.bairro = bairro;
-		this.cep = cep;
-		this.municipio = municipio;
-		this.contato = contato;
-		this.dep = dep;
-		this.tipoJF = tipoJF;
-		this.cnpj = cnpj;
-		this.inscrEst = inscrEst;
-		this.inscrMun = inscrMun;
-		this.telefone_1 = telefone_1;
-		this.telefone_2 = telefone_2;
-		this.telefone_3 = telefone_3;
-		this.email_1 = email_1;
-		this.email_2 = email_2;
-		this.email_3 = email_3;
-		this.desc_1 = desc_1;
-		this.desc_2 = desc_2;
-		this.desc_3 = desc_3;
-		this.desc_4 = desc_4;
-		this.desc_5 = desc_5;
-		this.desc_6 = desc_6;
-		this.diferen = diferen;
-		this.rep_1 = rep_1;
-		this.rep_2 = rep_2;
-		this.rep_3 = rep_3;
-		this.rep_4 = rep_4;
-		this.obs = obs;
-		this.plan_obs = plan_obs;
-		this.bloq = bloq;
-		this.crd_icms = crd_icms;
-		this.pc_cr_icms_1 = pc_cr_icms_1;
-		this.pc_cr_icms_2 = pc_cr_icms_2;
-		this.pc_cr_icms_3 = pc_cr_icms_3;
-	}
+    @Column(nullable = false)
+    private Double pc_cr_icms_1;
+
+    @Column(nullable = true)
+    private Double pc_cr_icms_2;
+
+    @Column(nullable = true)
+    private Double pc_cr_icms_3;
+
+    public Fornecedor() {}
+
+    public Fornecedor(UFD ufd_fornec, Empresa emp, Long id, String razSoc, String nomeFant, String end, String bairro,
+                      String cep, String municipio, String contato, String dep, Double tipoJF, String cnpj, String inscrEst,
+                      String inscrMun, String telefone_1, String telefone_2, String telefone_3, String email_1, String email_2,
+                      String email_3, String desc_1, String desc_2, String desc_3, String desc_4, String desc_5,
+                      String desc_6, Double diferen, Double rep_1, Double rep_2, Double rep_3, Double rep_4, String obs,
+                      String plan_obs, boolean bloq, @Length(max = 1, min = 1) String crd_icms, Double pc_cr_icms_1,
+                      Double pc_cr_icms_2, Double pc_cr_icms_3) {
+        this.ufd_fornec = ufd_fornec;
+        this.emp = emp;
+        this.id = id;
+        this.razSoc = razSoc;
+        this.nomeFant = nomeFant;
+        this.end = end;
+        this.bairro = bairro;
+        this.cep = cep;
+        this.municipio = municipio;
+        this.contato = contato;
+        this.dep = dep;
+        this.tipoJF = tipoJF;
+        this.cnpj = cnpj;
+        this.inscrEst = inscrEst;
+        this.inscrMun = inscrMun;
+        this.telefone_1 = telefone_1;
+        this.telefone_2 = telefone_2;
+        this.telefone_3 = telefone_3;
+        this.email_1 = email_1;
+        this.email_2 = email_2;
+        this.email_3 = email_3;
+        this.desc_1 = desc_1;
+        this.desc_2 = desc_2;
+        this.desc_3 = desc_3;
+        this.desc_4 = desc_4;
+        this.desc_5 = desc_5;
+        this.desc_6 = desc_6;
+        this.diferen = diferen;
+        this.rep_1 = rep_1;
+        this.rep_2 = rep_2;
+        this.rep_3 = rep_3;
+        this.rep_4 = rep_4;
+        this.obs = obs;
+        this.plan_obs = plan_obs;
+        this.bloq = bloq;
+        this.crd_icms = crd_icms;
+        this.pc_cr_icms_1 = pc_cr_icms_1;
+        this.pc_cr_icms_2 = pc_cr_icms_2;
+        this.pc_cr_icms_3 = pc_cr_icms_3;
+    }
 
 	public UFD getUfd() {
 		return ufd_fornec;
@@ -472,11 +471,11 @@ public class Fornecedor implements Serializable {
 		this.bloq = bloq;
 	}
 
-	public char getCrd_icms() {
+	public String getCrd_icms() {
 		return crd_icms;
 	}
 
-	public void setCrd_icms(char crd_icms) {
+	public void setCrd_icms(String crd_icms) {
 		this.crd_icms = crd_icms;
 	}
 
@@ -505,7 +504,7 @@ public class Fornecedor implements Serializable {
 	}
 
 	public static long getSeialversionuid() {
-		return seialVersionUID;
+		return serialVersionUID;
 	}
 
 	

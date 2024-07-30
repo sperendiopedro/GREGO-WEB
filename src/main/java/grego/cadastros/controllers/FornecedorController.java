@@ -39,24 +39,29 @@ public class FornecedorController {
 	}
 
 	@PostMapping(value = "/saveFornec")
-	public ResponseEntity register(@RequestBody Fornecedor fornec) {
-		if (fornecRepo.findByCnpj(fornec.getCnpj()) == null) {
-			return new ResponseEntity("CNPJ já cadastrado!", HttpStatus.BAD_REQUEST);
+	public ResponseEntity<String> register(@RequestBody Fornecedor fornec) {
+		if (fornecRepo.findByCnpj(fornec.getCnpj()) != null) {
+			return new ResponseEntity<>("CNPJ já cadastrado!", HttpStatus.BAD_REQUEST);
 		}
 		if (fornec.getUfd() != null && fornec.getUfd().getId() != null) {
 			Optional<UFD> ufdOpt = ufdRepo.findById(fornec.getUfd().getId());
 			if (!ufdOpt.isPresent()) {
-				return new ResponseEntity("UFD não encontrada", HttpStatus.BAD_REQUEST);
+				return new ResponseEntity<>("UFD não encontrada", HttpStatus.BAD_REQUEST);
 			}
 			fornec.setUfd(ufdOpt.get());
+		} else {
+			return new ResponseEntity<>("UFD é obrigatória", HttpStatus.BAD_REQUEST);
 		}
 		if (fornec.getEmp() != null && fornec.getEmp().getId() != null) {
 			Optional<Empresa> empOpt = empRepo.findById(fornec.getEmp().getId());
 			if (!empOpt.isPresent()) {
-				return new ResponseEntity("UFD não encontrada", HttpStatus.BAD_REQUEST);
+				return new ResponseEntity<>("Empresa não encontrada", HttpStatus.BAD_REQUEST);
 			}
 			fornec.setEmp(empOpt.get());
+		} else {
+			return new ResponseEntity<>("Empresa é obrigatória", HttpStatus.BAD_REQUEST);
 		}
+
 		fornecRepo.saveAndFlush(fornec);
 		return ResponseEntity.ok("Fornecedor cadastrado");
 	}

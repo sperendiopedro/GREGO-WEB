@@ -36,8 +36,6 @@ public class SecurityConfig {
     protected SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(authorize -> authorize
-                .requestMatchers(HttpMethod.POST, "/ufd/saveUfd"
-                				).authenticated()
                 .anyRequest().permitAll())
                 .httpBasic(Customizer.withDefaults());
         return http.build();
