@@ -3,12 +3,14 @@ package grego.users.config;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -27,23 +29,30 @@ import com.nimbusds.jose.jwk.source.ImmutableJWKSet;
 import com.nimbusds.jose.jwk.source.JWKSource;
 import com.nimbusds.jose.proc.SecurityContext;
 
+import grego.users.service.UserServiceImpl;
+
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
+	
+	@Autowired
+	private UserServiceImpl userService; 
 	   
     @Bean
     protected SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(authorize -> authorize
-                .anyRequest().permitAll())
+            	.requestMatchers("/ufd/listUfd").permitAll()
+                .anyRequest().authenticated())
                 .httpBasic(Customizer.withDefaults());
         return http.build();
     }
     
-    @Bean
-    protected AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig) throws Exception{
-    	return authConfig.getAuthenticationManager(); 
+
+    protected void authenticationManager(AuthenticationManagerBuilder authConfig) throws Exception{
+    	authConfig.userDetailsService(userService)
+    			.passwordEncoder(passwordEncoder());
     }
     
     @Bean

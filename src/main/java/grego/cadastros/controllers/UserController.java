@@ -24,8 +24,9 @@ import grego.users.repositories.UserRepository;
 @CrossOrigin(origins = "*")
 public class UserController {
 	
-	@Autowired
+	/*@Autowired
 	private PasswordEncoder passwdEncoder; 
+	*/
 	@Autowired
 	private UserRepository userRepo; 
 	
@@ -43,7 +44,7 @@ public class UserController {
 		}
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
-	
+/*	
 	@PostMapping("/register")
 	public ResponseEntity register(@RequestBody User user) {
 		if(userRepo.findByEmail(user.getEmail())!= null || user.getNome() == null) return new ResponseEntity<>("Usuário já existe no sistema!", HttpStatus.BAD_REQUEST); 
@@ -52,6 +53,6 @@ public class UserController {
 		userRepo.saveAndFlush(user);
 		return ResponseEntity.ok("Usuario salvo com sucesso!"); 
 	}
-
+	*/
 
 }
