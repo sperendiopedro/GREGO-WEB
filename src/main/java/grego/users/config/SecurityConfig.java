@@ -43,8 +43,8 @@ public class SecurityConfig {
     protected SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(authorize -> authorize
-            	.requestMatchers("/ufd/listUfd").permitAll()
-                .anyRequest().authenticated())
+            .requestMatchers("/user/**").permitAll()
+            .anyRequest().authenticated())
                 .httpBasic(Customizer.withDefaults());
         return http.build();
     }
