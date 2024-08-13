@@ -36,25 +36,36 @@ import grego.users.service.UserServiceImpl;
 @EnableWebSecurity
 public class SecurityConfig {
 	
-	@Autowired
-	private UserServiceImpl userService; 
+	
 	   
-    @Bean
+    @Value("${jwt.public.key}")
+    private RSAPublicKey publicKey; 
+    @Value("${jwt.private.key}")
+    private RSAPrivateKey privateKey;
+	
+	@Bean
     protected SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(authorize -> authorize
-            .requestMatchers("/user/**").permitAll()
             .anyRequest().authenticated())
-                .httpBasic(Customizer.withDefaults());
+            .httpBasic(Customizer.withDefaults())
+            .oauth2ResourceServer(
+            		conf -> conf.jwt(Customizer.withDefaults())); 
         return http.build();
     }
     
-
-    protected void authenticationManager(AuthenticationManagerBuilder authConfig) throws Exception{
-    	authConfig.userDetailsService(userService)
-    			.passwordEncoder(passwordEncoder());
+    @Bean
+    JwtDecoder jwtDecoder() {
+    	return NimbusJwtDecoder.withPublicKey(publicKey).build();
     }
     
+    @Bean
+    JwtEncoder jwtEncoder() {
+    	var jwk = new RSAKey.Builder(publicKey).privateKey(privateKey).build();
+    	var jwks = new ImmutableJWKSet<>(new JWKSet(jwk)); 
+    	return new NimbusJwtEncoder(jwks);
+    }
+
     @Bean
     protected PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();

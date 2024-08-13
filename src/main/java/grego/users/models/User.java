@@ -28,7 +28,7 @@ public class User {
 	private String email;
 
 	@Column(nullable = false)
-	private String psswd;
+	private String password;
 	
     @Column(nullable=false)
 	private String userRole; 
@@ -36,11 +36,11 @@ public class User {
 	public User() {
 	}
 	
-	public User(String nome, String setor, String email, String psswd, String userRole) {
+	public User(String nome, String setor, String email, String password, String userRole) {
 		this.nome = nome;
 		this.setor = setor;
 		this.email = email;
-		this.psswd = psswd;
+		this.password = password;
 		this.userRole=userRole; 
 	}
 
@@ -76,12 +76,12 @@ public class User {
 		this.email = email;
 	}
 
-	public String getPsswd() {
-		return psswd;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setPsswd(String psswd) {
-		this.psswd = psswd;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public String getUserRole() {

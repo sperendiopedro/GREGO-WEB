@@ -27,6 +27,7 @@ public class UserController {
 	@Autowired
 	private PasswordEncoder passwdEncoder; 
 	
+	
 	@Autowired
 	private UserRepository userRepo; 
 	
@@ -35,20 +36,10 @@ public class UserController {
 		return userRepo.findAll(); 
 	}
 	
-	@GetMapping("/list/{id}")
-	public ResponseEntity<User> lisById(@PathVariable UUID id){
-		if(id == null) {
-			return new ResponseEntity("Id não pode ser nulo!", HttpStatus.BAD_REQUEST);
-		}else {
-			userRepo.findById(id); 
-		}
-		return new ResponseEntity<>(HttpStatus.OK);
-	}
-
 	@PostMapping("/register")
 	public ResponseEntity register(@RequestBody User user) {
 		if(userRepo.findByEmail(user.getEmail()) != null) return new ResponseEntity<>("Usuário já existe no sistema!", HttpStatus.BAD_GATEWAY); 
-		user.setPsswd(passwdEncoder.encode(user.getPsswd())); 
+		user.setPassword(passwdEncoder.encode(user.getPassword())); 
 		user.setUserRole(user.getUserRole().toUpperCase());
 		userRepo.saveAndFlush(user);
 		return ResponseEntity.ok("Usuario salvo com sucesso!"); 
