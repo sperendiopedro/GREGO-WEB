@@ -1,6 +1,8 @@
 package grego.cadastros.controllers;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,12 +39,21 @@ public class UserController {
 	}
 	
 	@PostMapping("/register")
-	public ResponseEntity register(@RequestBody User user) {
-		if(userRepo.findByEmail(user.getEmail()) != null) return new ResponseEntity<>("Usuário já existe no sistema!", HttpStatus.BAD_GATEWAY); 
-		user.setPassword(passwdEncoder.encode(user.getPassword())); 
-		user.setUserRole(user.getUserRole().toUpperCase());
-		userRepo.saveAndFlush(user);
-		return ResponseEntity.ok("Usuario salvo com sucesso!"); 
+	public ResponseEntity<?> register(@RequestBody User user) {
+	    Optional<User> optUser = userRepo.findByEmail(user.getEmail());
+
+	    if(optUser.isPresent()) {
+	        return new ResponseEntity<>(Map.of("message", "Usuário já existe no sistema!"), HttpStatus.CONFLICT);
+	    }
+
+	    try {
+	        user.setPassword(passwdEncoder.encode(user.getPassword())); 
+	        user.setUserRole(user.getUserRole().toUpperCase());
+	        userRepo.saveAndFlush(user);
+	        return ResponseEntity.ok(Map.of("message", "Usuario salvo com sucesso!"));
+	    } catch (Exception e) {
+	        return new ResponseEntity<>(Map.of("message", "Erro ao salvar o usuário!", "error", e.getMessage()), HttpStatus.INTERNAL_SERVER_ERROR);
+	    }
 	}
 	
 
