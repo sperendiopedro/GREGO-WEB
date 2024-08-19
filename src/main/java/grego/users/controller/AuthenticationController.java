@@ -1,6 +1,9 @@
 package grego.users.controller;
 
+import javax.security.sasl.AuthenticationException;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,7 +23,11 @@ public class AuthenticationController {
 	//THIS IS WHERE WE RECEIVE THE AUTHENTICATION TO GENERATE THE TOKEN
 	//WE DO NOT NEED TO REQUEST A BODY, SPRING DOES BY ITS SELF
 	@PostMapping("/authenticate")                        
-	public String authenticate(Authentication authentication) {
-		return authenticationService.authenticate(authentication);  
+	public String authenticate(Authentication authentication) throws AuthenticationException {
+		if(authentication != null) { 
+		return authenticationService.authenticate(authentication);  		
+		}else {
+			throw new BadCredentialsException("Authentication object cant be null"); 
+		}
 	}
 }

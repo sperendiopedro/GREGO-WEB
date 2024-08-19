@@ -34,12 +34,12 @@ public class EmpresaController {
 		return empRepo.findAll(); 
 	}
 	
-	@PostMapping("/saveEmp")
+	/*@PostMapping("/saveEmp")
 	public ResponseEntity<String> register(@RequestBody Empresa empresa) {
 		if(empRepo.findByCnpj(empresa.getCnpj()) != null) {
 			return new ResponseEntity<>("Empresa com CNPJ existente", HttpStatus.BAD_REQUEST);
 		}
-		if(empresa.getUfd() != null && empresa.getUfd().getId()	!= null) {
+		if(empresa.getUfd() != null && empresa.getUfd()   != null) {
 			  Optional<UFD> ufdOpt = ufdRepo.findById(empresa.getUfd().getId());
 	            if (!ufdOpt.isPresent()) {
 	                return new ResponseEntity<>("UFD não encontrada!", HttpStatus.BAD_REQUEST);
@@ -49,6 +49,7 @@ public class EmpresaController {
 		empRepo.saveAndFlush(empresa); 
 		return ResponseEntity.ok(("Empresa registrada")); 
 	}
+	*/
 	
 	@PatchMapping("/updateEmp")
 	public ResponseEntity updateEmp(@RequestBody Empresa newEmp) {

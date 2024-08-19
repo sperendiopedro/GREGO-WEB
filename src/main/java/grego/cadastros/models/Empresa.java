@@ -13,20 +13,11 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "TB0003_EMPRESA")
+@Table(name = "TB0002_EMPRESA")
 public class Empresa {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id; 
-	
-	@ManyToOne
-	@JoinColumn(
-				name="ufd_id_emp", nullable=false
-			)
-	private UFD ufd_emp; 
-	
-	@OneToMany(mappedBy = "emp")
-	private Set<Fornecedor> fornec; 
 	
 	@Column(nullable = false)
 	private String razSoc;
@@ -67,14 +58,20 @@ public class Empresa {
 	@Column(nullable = false)
 	private String obs;
 
+	@OneToMany(mappedBy="ufd_emp")
+	private Set<UFD> ufd; 
+	
+	@OneToMany(mappedBy = "fornec_emp")
+	private Set<Fornecedor> fornec; 
+
 	public Empresa() {
 	}
-	
-	public Empresa(Long id, UFD ufd_emp, String razSoc, String nomeFant, String end, String bairro, String cep, String cnpj,
-			String inscrMun, String inscrEst, String telefone, String email, Double relSoc, Double nrCupom,
-			String obs) {
+
+	public Empresa(Long id, String razSoc, String nomeFant, String end, String bairro, String cep, String cnpj,
+			String inscrMun, String inscrEst, String telefone, String email, Double relSoc, Double nrCupom, String obs,
+			Set<UFD> ufd, Set<Fornecedor> fornec) {
+		super();
 		this.id = id;
-		this.ufd_emp = ufd_emp;
 		this.razSoc = razSoc;
 		this.nomeFant = nomeFant;
 		this.end = end;
@@ -88,14 +85,12 @@ public class Empresa {
 		this.relSoc = relSoc;
 		this.nrCupom = nrCupom;
 		this.obs = obs;
+		this.ufd = ufd;
+		this.fornec = fornec;
 	}
 
-	public UFD getUfd() {
-		return ufd_emp;
-	}
-
-	public void setUfd(UFD ufd_emp) {
-		this.ufd_emp = ufd_emp;
+	public Long getId() {
+		return id;
 	}
 
 	public String getRazSoc() {
@@ -202,9 +197,24 @@ public class Empresa {
 		this.obs = obs;
 	}
 
-	public Long getId() {
-		return id;
-	} 
+	public Set<UFD> getUfd() {
+		return ufd;
+	}
+
+	public void setUfd(Set<UFD> ufd) {
+		this.ufd = ufd;
+	}
+
+	public Set<Fornecedor> getFornec() {
+		return fornec;
+	}
+
+	public void setFornec(Set<Fornecedor> fornec) {
+		this.fornec = fornec;
+	}
+	
+	
+	
 	
 	
 	

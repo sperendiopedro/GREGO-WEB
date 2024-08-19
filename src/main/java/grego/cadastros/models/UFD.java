@@ -11,23 +11,18 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "TB0002_UFD")
+@Table(name = "TB0003_UFD")
 public class UFD implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@OneToMany(mappedBy = "ufd_emp")
-	private Set<Empresa> empresa;
-
-	@OneToMany(mappedBy= "ufd_fornec")
-	private Set<Fornecedor> fornec; 
 	
 	@Column(nullable = false)
 	private String nome;
@@ -38,15 +33,15 @@ public class UFD implements Serializable {
 
 	@Column(nullable = false)
 	private Double aliqIcms;
-
+	
+	@OneToMany(mappedBy= "fornec_ufd")
+	private Set<Fornecedor> ufd_fornec; 
+	
+	@ManyToOne
+	@JoinColumn(name = "id_emp", nullable = false)
+	private Empresa ufd_emp; 
+	
 	public UFD() {
-	}
-
-	public UFD(Long id, String nome, String sigla, Double aliqIcms) {
-		this.id = id;
-		this.nome = nome;
-		this.sigla = sigla;
-		this.aliqIcms = aliqIcms;
 	}
 
 	public String getNome() {
@@ -73,7 +68,28 @@ public class UFD implements Serializable {
 		this.aliqIcms = aliqIcms;
 	}
 
+	public Set<Fornecedor> getUfd_fornec() {
+		return ufd_fornec;
+	}
+
+	public void setUfd_fornec(Set<Fornecedor> ufd_fornec) {
+		this.ufd_fornec = ufd_fornec;
+	}
+
+	public Empresa getUfd_emp() {
+		return ufd_emp;
+	}
+
+	public void setUfd_emp(Empresa ufd_emp) {
+		this.ufd_emp = ufd_emp;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	public Long getId() {
 		return id;
 	}
+	
 }

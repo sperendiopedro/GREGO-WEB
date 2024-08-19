@@ -50,24 +50,24 @@ public class UFDController {
  		ufdRepo.saveAndFlush(ufd); 
 		return ResponseEntity.ok("UFD Registrado"); 
 	}	
-		
-	   @PatchMapping("/updateUfd")
-	    public ResponseEntity<String> update(@RequestBody UFD newUfd) {
-	        if (newUfd.getId() == null) {
-	            return new ResponseEntity<>("Id null", HttpStatus.BAD_REQUEST);
-	        }
-	        Optional<UFD> existingUfdOpt = ufdRepo.findById(newUfd.getId());
-	        if (!existingUfdOpt.isPresent()) {
-	            return new ResponseEntity<>("UFD não encontrada!", HttpStatus.BAD_REQUEST);
-	        }
-	        
-	        //think about a while condition to check the fields
-	        UFD existingUfd = existingUfdOpt.get();
-	        if (newUfd.getNome() != null) existingUfd.setNome(newUfd.getNome());
-	        if (newUfd.getSigla() != null) existingUfd.setSigla(newUfd.getSigla());
-	        if (newUfd.getAliqIcms() != 0) existingUfd.setAliqIcms(newUfd.getAliqIcms());
-	        ufdRepo.saveAndFlush(existingUfd);
-	        return ResponseEntity.ok("UFD altered");
-	    }
+	
+   @PatchMapping("/updateUfd")
+    public ResponseEntity<String> update(@RequestBody UFD newUfd) {
+        if (newUfd.getId() == null) {
+            return new ResponseEntity<>("Id null", HttpStatus.BAD_REQUEST);
+        }
+        Optional<UFD> existingUfdOpt = ufdRepo.findById(newUfd.getId());
+        if (!existingUfdOpt.isPresent()) {
+            return new ResponseEntity<>("UFD não encontrada!", HttpStatus.BAD_REQUEST);
+        }
+        
+        //think about a while condition to check the fields
+        UFD existingUfd = existingUfdOpt.get();
+        if (newUfd.getNome() != null) existingUfd.setNome(newUfd.getNome());
+        if (newUfd.getSigla() != null) existingUfd.setSigla(newUfd.getSigla());
+        if (newUfd.getAliqIcms() != 0) existingUfd.setAliqIcms(newUfd.getAliqIcms());
+        ufdRepo.saveAndFlush(existingUfd);
+        return ResponseEntity.ok("UFD altered");
+    }
 	
 }
