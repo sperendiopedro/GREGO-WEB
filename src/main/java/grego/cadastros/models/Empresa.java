@@ -2,18 +2,19 @@ package grego.cadastros.models;
 
 import java.util.Set;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "TB0002_EMPRESA")
+@CrossOrigin(origins="*")
 public class Empresa {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -70,7 +71,6 @@ public class Empresa {
 	public Empresa(Long id, String razSoc, String nomeFant, String end, String bairro, String cep, String cnpj,
 			String inscrMun, String inscrEst, String telefone, String email, Double relSoc, Double nrCupom, String obs,
 			Set<UFD> ufd, Set<Fornecedor> fornec) {
-		super();
 		this.id = id;
 		this.razSoc = razSoc;
 		this.nomeFant = nomeFant;

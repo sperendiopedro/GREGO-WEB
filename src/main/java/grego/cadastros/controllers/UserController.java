@@ -41,11 +41,9 @@ public class UserController {
 	@PostMapping("/register")
 	public ResponseEntity<?> register(@RequestBody User user) {
 	    Optional<User> optUser = userRepo.findByEmail(user.getEmail());
-
 	    if(optUser.isPresent()) {
 	        return new ResponseEntity<>(Map.of("message", "Usuário já existe no sistema!"), HttpStatus.CONFLICT);
 	    }
-
 	    try {
 	        user.setPassword(passwdEncoder.encode(user.getPassword())); 
 	        user.setUserRole(user.getUserRole().toUpperCase());

@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import grego.cadastros.models.Empresa;
 import grego.cadastros.models.UFD;
+import grego.cadastros.repositories.EmpresaRepository;
 import grego.cadastros.repositories.UFDRepository;
 
 @RestController
@@ -26,6 +28,9 @@ public class UFDController {
 	
 	@Autowired
 	private UFDRepository ufdRepo; 
+	
+	@Autowired
+	private EmpresaRepository empRepo; 
 	
 	@GetMapping("/listUfd")
 	public List<UFD> listAll(){
@@ -44,7 +49,17 @@ public class UFDController {
 	@PostMapping("/saveUfd")
 	public ResponseEntity<String> register(@RequestBody UFD ufd) {
 		if(ufdRepo.findBySigla(ufd.getSigla()) != null) {
-			return new ResponseEntity<>("Unidade Federal já existente", HttpStatus.BAD_REQUEST); 
+			return new ResponseEntity<>("Unidade Federal já existente", HttpStatus.CONFLICT); 
+		}
+		
+		if(ufd.getUfd_emp() != null && ufd.getUfd_emp().getId() != null ) { 
+			Optional<Empresa> empExisting = empRepo.findById(ufd.getUfd_emp().getId());
+			if(!empExisting.isPresent()) {
+				return new ResponseEntity<>("Empresa não existente!", HttpStatus.BAD_REQUEST);
+			}
+			ufd.setUfd_emp(empExisting.get());
+		}else {
+			return new ResponseEntity<>("Empresa é obrigatória", HttpStatus.BAD_REQUEST);
 		}
 		ufd.setSigla(ufd.getSigla().toUpperCase());
  		ufdRepo.saveAndFlush(ufd); 
