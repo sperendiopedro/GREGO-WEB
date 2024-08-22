@@ -5,6 +5,8 @@ import java.util.Set;
 
 import org.hibernate.validator.constraints.Length;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -35,6 +37,7 @@ public class UFD implements Serializable {
 	private Double aliqIcms;
 	
 	@OneToMany(mappedBy= "fornec_ufd")
+	@JsonIgnore
 	private Set<Fornecedor> ufd_fornec; 
 	
 	@ManyToOne
@@ -67,7 +70,7 @@ public class UFD implements Serializable {
 	public void setAliqIcms(Double aliqIcms) {
 		this.aliqIcms = aliqIcms;
 	}
-
+	
 	public Set<Fornecedor> getUfd_fornec() {
 		return ufd_fornec;
 	}

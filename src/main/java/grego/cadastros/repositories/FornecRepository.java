@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import grego.cadastros.models.Fornecedor;
 
 public interface FornecRepository extends JpaRepository<Fornecedor, Long>{
-	Optional<Fornecedor> findByCnpj(String cnpj); 
+	Fornecedor findByCnpj(String cnpj); 
 }

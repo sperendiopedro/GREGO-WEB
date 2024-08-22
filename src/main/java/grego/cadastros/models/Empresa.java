@@ -4,6 +4,8 @@ import java.util.Set;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -60,9 +62,11 @@ public class Empresa {
 	private String obs;
 
 	@OneToMany(mappedBy="ufd_emp")
+	@JsonIgnore
 	private Set<UFD> ufd; 
 	
 	@OneToMany(mappedBy = "fornec_emp")
+	@JsonIgnore
 	private Set<Fornecedor> fornec; 
 
 	public Empresa() {

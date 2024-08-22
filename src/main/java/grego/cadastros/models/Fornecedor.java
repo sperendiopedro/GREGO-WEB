@@ -192,19 +192,19 @@ public class Fornecedor implements Serializable {
 		this.pc_cr_icms_3 = pc_cr_icms_3;
 	}
 
-	public UFD getUfd_fornec() {
+	public UFD getFornec_ufd() {
 		return fornec_ufd;
 	}
 
-	public void setUfd_fornec(UFD fornec_ufd) {
+	public void setFornec_ufd(UFD fornec_ufd) {
 		this.fornec_ufd = fornec_ufd;
 	}
 
-	public Empresa getEmp_fornec() {
+	public Empresa getFornec_emp() {
 		return fornec_emp;
 	}
 
-	public void setEmp_fornec(Empresa fornec_emp) {
+	public void setFornec_emp(Empresa fornec_emp) {
 		this.fornec_emp = fornec_emp;
 	}
 
@@ -506,6 +506,9 @@ public class Fornecedor implements Serializable {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
-	}  
+	}
+	
+	
+    
+    
 }
-
