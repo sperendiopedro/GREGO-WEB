@@ -41,7 +41,7 @@ public class FornecedorController {
 
 	@PostMapping(value = "/saveFornec")
 	public ResponseEntity<String> register(@RequestBody Fornecedor fornec) {
-		if (fornecRepo.findByCnpj(fornec.getCnpj()) != null) {
+		/*if (fornecRepo.findByCnpj(fornec.getCnpj()) != null) {
 			return new ResponseEntity<>("CNPJ já cadastrado!", HttpStatus.BAD_REQUEST);
 		}
 		
@@ -64,7 +64,7 @@ public class FornecedorController {
 		}else {
 			return new ResponseEntity<>("Unidade federal é obrigatório!", HttpStatus.BAD_REQUEST);
 		}
-		
+		*/
 		fornecRepo.saveAndFlush(fornec);
 		return ResponseEntity.ok("Fornecedor cadastrado");
 	}

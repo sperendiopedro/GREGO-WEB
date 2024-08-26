@@ -16,65 +16,83 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "TB0002_EMPRESA")
-@CrossOrigin(origins="*")
+@CrossOrigin(origins = "*")
 public class Empresa {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id; 
-	
+	private Long id;
+
 	@Column(nullable = false)
 	private String razSoc;
-	
+
 	@Column(nullable = false)
-	private String nomeFant; 
-	
+	private String nomeFant;
+
 	@Column(nullable = false)
 	private String end;
-	
+
 	@Column(nullable = false)
-	private String bairro; 
-	
+	private String bairro;
+
 	@Column(nullable = false)
-	private String cep; 
-	
+	private String cep;
+
 	@Column(nullable = false)
-	private String cnpj; 
-	
+	private String cnpj;
+
 	@Column(nullable = false)
 	private String inscrMun;
-	
+
 	@Column(nullable = false)
 	private String inscrEst;
-	
+
 	@Column(nullable = false)
-	private String telefone; 
-	
+	private String telefone;
+
 	@Column(nullable = false)
-	private String email; 
-	
+	private String email;
+
 	@Column(nullable = false)
-	private Double relSoc; 
-	
+	private Double relSoc;
+
 	@Column(nullable = false)
-	private Double nrCupom; 
-	
+	private Double nrCupom;
+
 	@Column(nullable = false)
 	private String obs;
 
-	@OneToMany(mappedBy="ufd_emp")
+	@OneToMany(mappedBy = "ufd_emp")
 	@JsonIgnore
-	private Set<UFD> ufd; 
-	
+	private Set<UFD> empUfd;
+
 	@OneToMany(mappedBy = "fornec_emp")
 	@JsonIgnore
-	private Set<Fornecedor> fornec; 
+	private Set<Fornecedor> empFornec;
+
+	@OneToMany(mappedBy = "fam_emp")
+	@JsonIgnore
+	private Set<Familia> empFam;
+
+	@OneToMany(mappedBy = "prod_emp")
+	@JsonIgnore
+	private Set<Produto> empProd;
+
+	@OneToMany(mappedBy = "acabmat_emp")
+	@JsonIgnore
+	private Set<Acabmat> empAcabmat;
+
+	@OneToMany(mappedBy = "cor_emp")
+	@JsonIgnore
+	private Set<Cor> empCor;
 
 	public Empresa() {
 	}
 
 	public Empresa(Long id, String razSoc, String nomeFant, String end, String bairro, String cep, String cnpj,
 			String inscrMun, String inscrEst, String telefone, String email, Double relSoc, Double nrCupom, String obs,
-			Set<UFD> ufd, Set<Fornecedor> fornec) {
+			Set<UFD> empUfd, Set<Fornecedor> empFornec, Set<Familia> empFam, Set<Produto> empProd,
+			Set<Acabmat> empAcabmat, Set<Cor> empCor) {
+		super();
 		this.id = id;
 		this.razSoc = razSoc;
 		this.nomeFant = nomeFant;
@@ -89,8 +107,12 @@ public class Empresa {
 		this.relSoc = relSoc;
 		this.nrCupom = nrCupom;
 		this.obs = obs;
-		this.ufd = ufd;
-		this.fornec = fornec;
+		this.empUfd = empUfd;
+		this.empFornec = empFornec;
+		this.empFam = empFam;
+		this.empProd = empProd;
+		this.empAcabmat = empAcabmat;
+		this.empCor = empCor;
 	}
 
 	public Long getId() {
@@ -201,25 +223,52 @@ public class Empresa {
 		this.obs = obs;
 	}
 
-	public Set<UFD> getUfd() {
-		return ufd;
+	public Set<UFD> getEmpUfd() {
+		return empUfd;
 	}
 
-	public void setUfd(Set<UFD> ufd) {
-		this.ufd = ufd;
+	public void setEmpUfd(Set<UFD> empUfd) {
+		this.empUfd = empUfd;
 	}
 
-	public Set<Fornecedor> getFornec() {
-		return fornec;
+	public Set<Fornecedor> getEmpFornec() {
+		return empFornec;
 	}
 
-	public void setFornec(Set<Fornecedor> fornec) {
-		this.fornec = fornec;
+	public void setEmpFornec(Set<Fornecedor> empFornec) {
+		this.empFornec = empFornec;
 	}
-	
-	
-	
-	
-	
-	
+
+	public Set<Familia> getEmpFam() {
+		return empFam;
+	}
+
+	public void setEmpFam(Set<Familia> empFam) {
+		this.empFam = empFam;
+	}
+
+	public Set<Produto> getEmpProd() {
+		return empProd;
+	}
+
+	public void setEmpProd(Set<Produto> empProd) {
+		this.empProd = empProd;
+	}
+
+	public Set<Acabmat> getEmpAcabmat() {
+		return empAcabmat;
+	}
+
+	public void setEmpAcabmat(Set<Acabmat> empAcabmat) {
+		this.empAcabmat = empAcabmat;
+	}
+
+	public Set<Cor> getEmpCor() {
+		return empCor;
+	}
+
+	public void setEmpCor(Set<Cor> empCor) {
+		this.empCor = empCor;
+	}
+
 }

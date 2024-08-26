@@ -1,4 +1,4 @@
-package grego.cadastros.controllers;
+package grego.users.controller;
 
 import java.util.List;
 import java.util.Map;
