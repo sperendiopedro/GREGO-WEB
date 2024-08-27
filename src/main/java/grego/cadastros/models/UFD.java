@@ -36,7 +36,7 @@ public class UFD implements Serializable {
 	@Column(nullable = false)
 	private Double aliqIcms;
 
-	@OneToMany(mappedBy = "fornec_ufd")
+	@OneToMany(mappedBy = "fornecUfd")
 	@JsonIgnore
 	private Set<Fornecedor> ufdFornec;
 

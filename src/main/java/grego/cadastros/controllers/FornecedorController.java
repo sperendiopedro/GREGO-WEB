@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,37 +34,37 @@ public class FornecedorController {
 	@Autowired
 	private EmpresaRepository empRepo;
 
-	@GetMapping(value = "/listEmp")
+	@GetMapping(value = "/listFornec")
 	public List<Fornecedor> listAll() {
 		return fornecRepo.findAll();
 	}
 
 	@PostMapping(value = "/saveFornec")
 	public ResponseEntity<String> register(@RequestBody Fornecedor fornec) {
-		/*if (fornecRepo.findByCnpj(fornec.getCnpj()) != null) {
-			return new ResponseEntity<>("CNPJ já cadastrado!", HttpStatus.BAD_REQUEST);
-		}
-		
-		if(fornec.getFornec_emp() != null && fornec.getFornec_emp().getId() != null) {
-			Optional<Empresa> optEmp = empRepo.findById(fornec.getFornec_emp().getId()); 
-			if(!optEmp.isPresent()) {
-				return new ResponseEntity<>("Empresa não existe!", HttpStatus.BAD_REQUEST); 
+		if (fornec.getFornecEmp() != null && fornec.getFornecUfd().getId() != null) {
+			Optional<Empresa> optEmp = empRepo.findById(fornec.getFornecEmp().getId());
+			if (!optEmp.isPresent()) {
+				return new ResponseEntity<>("Empresa inexistente!", HttpStatus.BAD_REQUEST);
 			}
-			fornec.setFornec_emp(optEmp.get());  
-		}else {
-			return new ResponseEntity<>("Empresa é obrigatório!", HttpStatus.BAD_REQUEST);
+			fornec.setFornecEmp(optEmp.get());
+		} else {
+			return new ResponseEntity<>("Empresa é obrigatório", HttpStatus.BAD_REQUEST);
 		}
-		
-		if(fornec.getFornec_ufd() != null && fornec.getFornec_ufd().getId() != null) {
-			Optional<UFD> optUfd = ufdRepo.findById(fornec.getFornec_ufd().getId()); 
-			if(!optUfd.isPresent()) {
-				return new ResponseEntity<>("Unidade Federal inexistente", HttpStatus.BAD_REQUEST); 
+
+		if (fornec.getFornecUfd() != null && fornec.getFornecUfd().getId() != null) {
+			Optional<UFD> optUfd = ufdRepo.findById(fornec.getFornecUfd().getId());
+			if (!optUfd.isPresent()) {
+				return new ResponseEntity<>("UFD inexistente", HttpStatus.BAD_REQUEST);
 			}
-			fornec.setFornec_ufd(optUfd.get()); 
-		}else {
-			return new ResponseEntity<>("Unidade federal é obrigatório!", HttpStatus.BAD_REQUEST);
+			fornec.setFornecUfd(optUfd.get());
+		} else {
+			return new ResponseEntity<>("Unidade federal é obrigatória!", HttpStatus.BAD_REQUEST);
 		}
-		*/
+
+		Optional<Fornecedor> optFornec = fornecRepo.findByCnpjAndFornecEmp(fornec.getCnpj(), fornec.getFornecEmp());
+		if (optFornec.isPresent()) {
+			return new ResponseEntity<>("Fornecedor já existente na base de dados", HttpStatus.BAD_REQUEST);
+		}
 		fornecRepo.saveAndFlush(fornec);
 		return ResponseEntity.ok("Fornecedor cadastrado");
 	}

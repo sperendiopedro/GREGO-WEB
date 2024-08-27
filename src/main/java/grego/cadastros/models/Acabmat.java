@@ -21,11 +21,11 @@ public class Acabmat implements Serializable{
 	private Long id; 
 	
 	@Column(nullable = false)
-	private String desc; 
+	private String descr;
 	
 	@Column(nullable = false)
-	private String obs; 
-	
+	private String obs;
+
 	@ManyToOne
 	@JoinColumn(name="acabmat_emp", nullable = false)
 	private Empresa acbmatEmp; 
@@ -33,19 +33,19 @@ public class Acabmat implements Serializable{
 	public Acabmat() {
 	}
 
-	public Acabmat(Long id, String desc, String obs, Empresa acbmatEmp) {
+	public Acabmat(Long id, String descr, String obs, Empresa acbmatEmp) {
 		this.id = id;
-		this.desc = desc;
+		this.descr = descr;
 		this.obs = obs;
 		this.acbmatEmp = acbmatEmp;
 	}
 
-	public String getDesc() {
-		return desc;
+	public String getDescr() {
+		return descr;
 	}
 
-	public void setDesc(String desc) {
-		this.desc = desc;
+	public void setDescr(String descr) {
+		this.descr = descr;
 	}
 
 	public String getObs() {

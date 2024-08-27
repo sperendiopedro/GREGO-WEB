@@ -21,31 +21,32 @@ public class Produto implements Serializable {
 	private Long id;
 
 	@Column(nullable = false)
-	private String desc;
-
+	private String descr;
+	
 	@Column(nullable = false)
 	private String obs;
 
+
 	@ManyToOne
 	@JoinColumn(name = "prod_emp", nullable = false)
-	private Empresa prod_emp;
+	private Empresa prodEmp;
 
 	public Produto() {
 	}
 
-	public Produto(Long id, String desc, String obs, Empresa prod_emp) {
+	public Produto(Long id, String descr, String obs, Empresa prodEmp) {
 		this.id = id;
-		this.desc = desc;
+		this.descr = descr;
 		this.obs = obs;
-		this.prod_emp = prod_emp;
+		this.prodEmp = prodEmp;
 	}
 
-	public String getDesc() {
-		return desc;
+	public String getDescr() {
+		return descr;
 	}
 
-	public void setDesc(String desc) {
-		this.desc = desc;
+	public void setDescr(String descr) {
+		this.descr = descr;
 	}
 
 	public String getObs() {
@@ -56,12 +57,12 @@ public class Produto implements Serializable {
 		this.obs = obs;
 	}
 
-	public Empresa getProd_emp() {
-		return prod_emp;
+	public Empresa getProdEmp() {
+		return prodEmp;
 	}
 
-	public void setProd_emp(Empresa prod_emp) {
-		this.prod_emp = prod_emp;
+	public void setProdEmp(Empresa prodEmp) {
+		this.prodEmp = prodEmp;
 	}
 
 	public static long getSerialversionuid() {
@@ -71,5 +72,7 @@ public class Produto implements Serializable {
 	public Long getId() {
 		return id;
 	}
+	
+	
 
 }

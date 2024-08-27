@@ -1,5 +1,6 @@
 package grego.cadastros.models;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -17,7 +18,9 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "TB0002_EMPRESA")
 @CrossOrigin(origins = "*")
-public class Empresa {
+public class Empresa implements Serializable{
+	private static final long serialVersionUID = 1L; 
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -61,27 +64,27 @@ public class Empresa {
 	@Column(nullable = false)
 	private String obs;
 
-	@OneToMany(mappedBy = "ufd_emp")
+	@OneToMany(mappedBy = "ufdEmp")
 	@JsonIgnore
 	private Set<UFD> empUfd;
 
-	@OneToMany(mappedBy = "fornec_emp")
+	@OneToMany(mappedBy = "fornecEmp")
 	@JsonIgnore
 	private Set<Fornecedor> empFornec;
 
-	@OneToMany(mappedBy = "fam_emp")
+	@OneToMany(mappedBy = "famEmp")
 	@JsonIgnore
 	private Set<Familia> empFam;
 
-	@OneToMany(mappedBy = "prod_emp")
+	@OneToMany(mappedBy = "prodEmp")
 	@JsonIgnore
 	private Set<Produto> empProd;
 
-	@OneToMany(mappedBy = "acabmat_emp")
+	@OneToMany(mappedBy = "acbmatEmp")
 	@JsonIgnore
 	private Set<Acabmat> empAcabmat;
 
-	@OneToMany(mappedBy = "cor_emp")
+	@OneToMany(mappedBy = "corEmp")
 	@JsonIgnore
 	private Set<Cor> empCor;
 

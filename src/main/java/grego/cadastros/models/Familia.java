@@ -19,52 +19,21 @@ public class Familia implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(nullable = false)
-	private Long id_fam;
+	private Long id;
 
 	@Column(nullable = false)
-	private String desc;
-
+	private String descr;
+	
 	@Column(nullable = false)
 	private String obs;
 
 	@ManyToOne
 	@JoinColumn(name = "fam_emp", nullable = false)
-	private Empresa fam_emp;
+	private Empresa famEmp;
 
 	public Familia() {
 	}
 
-	public String getDesc() {
-		return desc;
-	}
-
-	public void setDesc(String desc) {
-		this.desc = desc;
-	}
-
-	public String getObs() {
-		return obs;
-	}
-
-	public void setObs(String obs) {
-		this.obs = obs;
-	}
-
-	public Empresa getFam_emp() {
-		return fam_emp;
-	}
-
-	public void setFam_emp(Empresa fam_emp) {
-		this.fam_emp = fam_emp;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
-	public Long getId_fam() {
-		return id_fam;
-	}
+	
 
 }

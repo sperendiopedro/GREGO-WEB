@@ -16,7 +16,7 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "TB004_FORNECEDOR")
+@Table(name = "TB0004_FORNECEDOR")
 public class Fornecedor implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -61,77 +61,77 @@ public class Fornecedor implements Serializable {
 	private String inscrMun;
 
 	@Column(nullable = false)
-	private String telefone_1;
+	private String telefone1;
 
 	@Column(nullable = true)
-	private String telefone_2;
+	private String telefone2;
 
 	@Column(nullable = true)
-	private String telefone_3;
+	private String telefone3;
 
 	@Column(nullable = false)
-	private String email_1;
+	private String email1;
 
 	@Column(nullable = true)
-	private String email_2;
+	private String email2;
 
 	@Column(nullable = true)
-	private String email_3;
+	private String email3;
 
 	@Column(nullable = false)
-	private String desc_1;
+	private String desc1;
 
 	@Column(nullable = true)
-	private String desc_2;
+	private String desc2;
 
 	@Column(nullable = true)
-	private String desc_3;
+	private String desc3;
 
 	@Column(nullable = true)
-	private String desc_4;
+	private String desc4;
 
 	@Column(nullable = true)
-	private String desc_5;
+	private String desc5;
 
 	@Column(nullable = true)
-	private String desc_6;
+	private String desc6;
 
 	@Column(nullable = false)
 	private Double diferen;
 
 	@Column(nullable = false)
-	private Double rep_1;
+	private Double rep1;
 
 	@Column(nullable = true)
-	private Double rep_2;
+	private Double rep2;
 
 	@Column(nullable = true)
-	private Double rep_3;
+	private Double rep3;
 
 	@Column(nullable = true)
-	private Double rep_4;
+	private Double rep4;
 
 	@Column(nullable = false)
 	private String obs;
 
 	@Column(nullable = false)
-	private String plan_obs;
+	private String planObs;
 
 	@Column(nullable = false)
 	private boolean bloq;
 
 	@Column(nullable = false)
 	@Length(max = 1, min = 1)
-	private String crd_icms;
+	private String crdIcms;
 
 	@Column(nullable = false)
-	private Double pc_cr_icms_1;
+	private Double pcCrIcms1;
 
 	@Column(nullable = true)
-	private Double pc_cr_icms_2;
+	private Double pcCrIcms2;
 
 	@Column(nullable = true)
-	private Double pc_cr_icms_3;
+	private Double pcCrIcms3;
 
 	@ManyToOne
 	@JoinColumn(name = "fornec_ufd", nullable = false)
@@ -145,11 +145,11 @@ public class Fornecedor implements Serializable {
 	}
 
 	public Fornecedor(Long id, String razSoc, String nomeFant, String end, String bairro, String cep, String municipio,
-			String contato, String dep, Double tipoJF, String cnpj, String inscrEst, String inscrMun, String telefone_1,
-			String telefone_2, String telefone_3, String email_1, String email_2, String email_3, String desc_1,
-			String desc_2, String desc_3, String desc_4, String desc_5, String desc_6, Double diferen, Double rep_1,
-			Double rep_2, Double rep_3, Double rep_4, String obs, String plan_obs, boolean bloq,
-			@Length(max = 1, min = 1) String crd_icms, Double pc_cr_icms_1, Double pc_cr_icms_2, Double pc_cr_icms_3,
+			String contato, String dep, Double tipoJF, String cnpj, String inscrEst, String inscrMun, String telefone1,
+			String telefone2, String telefone3, String email1, String email2, String email3, String desc1, String desc2,
+			String desc3, String desc4, String desc5, String desc6, Double diferen, Double rep1, Double rep2,
+			Double rep3, Double rep4, String obs, String planObs, boolean bloq,
+			@Length(max = 1, min = 1) String crdIcms, Double pcCrIcms1, Double pcCrIcms2, Double pcCrIcms3,
 			UFD fornecUfd, Empresa fornecEmp) {
 		this.id = id;
 		this.razSoc = razSoc;
@@ -164,36 +164,32 @@ public class Fornecedor implements Serializable {
 		this.cnpj = cnpj;
 		this.inscrEst = inscrEst;
 		this.inscrMun = inscrMun;
-		this.telefone_1 = telefone_1;
-		this.telefone_2 = telefone_2;
-		this.telefone_3 = telefone_3;
-		this.email_1 = email_1;
-		this.email_2 = email_2;
-		this.email_3 = email_3;
-		this.desc_1 = desc_1;
-		this.desc_2 = desc_2;
-		this.desc_3 = desc_3;
-		this.desc_4 = desc_4;
-		this.desc_5 = desc_5;
-		this.desc_6 = desc_6;
+		this.telefone1 = telefone1;
+		this.telefone2 = telefone2;
+		this.telefone3 = telefone3;
+		this.email1 = email1;
+		this.email2 = email2;
+		this.email3 = email3;
+		this.desc1 = desc1;
+		this.desc2 = desc2;
+		this.desc3 = desc3;
+		this.desc4 = desc4;
+		this.desc5 = desc5;
+		this.desc6 = desc6;
 		this.diferen = diferen;
-		this.rep_1 = rep_1;
-		this.rep_2 = rep_2;
-		this.rep_3 = rep_3;
-		this.rep_4 = rep_4;
+		this.rep1 = rep1;
+		this.rep2 = rep2;
+		this.rep3 = rep3;
+		this.rep4 = rep4;
 		this.obs = obs;
-		this.plan_obs = plan_obs;
+		this.planObs = planObs;
 		this.bloq = bloq;
-		this.crd_icms = crd_icms;
-		this.pc_cr_icms_1 = pc_cr_icms_1;
-		this.pc_cr_icms_2 = pc_cr_icms_2;
-		this.pc_cr_icms_3 = pc_cr_icms_3;
+		this.crdIcms = crdIcms;
+		this.pcCrIcms1 = pcCrIcms1;
+		this.pcCrIcms2 = pcCrIcms2;
+		this.pcCrIcms3 = pcCrIcms3;
 		this.fornecUfd = fornecUfd;
 		this.fornecEmp = fornecEmp;
-	}
-
-	public Long getId() {
-		return id;
 	}
 
 	public String getRazSoc() {
@@ -292,100 +288,100 @@ public class Fornecedor implements Serializable {
 		this.inscrMun = inscrMun;
 	}
 
-	public String getTelefone_1() {
-		return telefone_1;
+	public String getTelefone1() {
+		return telefone1;
 	}
 
-	public void setTelefone_1(String telefone_1) {
-		this.telefone_1 = telefone_1;
+	public void setTelefone1(String telefone1) {
+		this.telefone1 = telefone1;
 	}
 
-	public String getTelefone_2() {
-		return telefone_2;
+	public String getTelefone2() {
+		return telefone2;
 	}
 
-	public void setTelefone_2(String telefone_2) {
-		this.telefone_2 = telefone_2;
+	public void setTelefone2(String telefone2) {
+		this.telefone2 = telefone2;
 	}
 
-	public String getTelefone_3() {
-		return telefone_3;
+	public String getTelefone3() {
+		return telefone3;
 	}
 
-	public void setTelefone_3(String telefone_3) {
-		this.telefone_3 = telefone_3;
+	public void setTelefone3(String telefone3) {
+		this.telefone3 = telefone3;
 	}
 
-	public String getEmail_1() {
-		return email_1;
+	public String getEmail1() {
+		return email1;
 	}
 
-	public void setEmail_1(String email_1) {
-		this.email_1 = email_1;
+	public void setEmail1(String email1) {
+		this.email1 = email1;
 	}
 
-	public String getEmail_2() {
-		return email_2;
+	public String getEmail2() {
+		return email2;
 	}
 
-	public void setEmail_2(String email_2) {
-		this.email_2 = email_2;
+	public void setEmail2(String email2) {
+		this.email2 = email2;
 	}
 
-	public String getEmail_3() {
-		return email_3;
+	public String getEmail3() {
+		return email3;
 	}
 
-	public void setEmail_3(String email_3) {
-		this.email_3 = email_3;
+	public void setEmail3(String email3) {
+		this.email3 = email3;
 	}
 
-	public String getDesc_1() {
-		return desc_1;
+	public String getDesc1() {
+		return desc1;
 	}
 
-	public void setDesc_1(String desc_1) {
-		this.desc_1 = desc_1;
+	public void setDesc1(String desc1) {
+		this.desc1 = desc1;
 	}
 
-	public String getDesc_2() {
-		return desc_2;
+	public String getDesc2() {
+		return desc2;
 	}
 
-	public void setDesc_2(String desc_2) {
-		this.desc_2 = desc_2;
+	public void setDesc2(String desc2) {
+		this.desc2 = desc2;
 	}
 
-	public String getDesc_3() {
-		return desc_3;
+	public String getDesc3() {
+		return desc3;
 	}
 
-	public void setDesc_3(String desc_3) {
-		this.desc_3 = desc_3;
+	public void setDesc3(String desc3) {
+		this.desc3 = desc3;
 	}
 
-	public String getDesc_4() {
-		return desc_4;
+	public String getDesc4() {
+		return desc4;
 	}
 
-	public void setDesc_4(String desc_4) {
-		this.desc_4 = desc_4;
+	public void setDesc4(String desc4) {
+		this.desc4 = desc4;
 	}
 
-	public String getDesc_5() {
-		return desc_5;
+	public String getDesc5() {
+		return desc5;
 	}
 
-	public void setDesc_5(String desc_5) {
-		this.desc_5 = desc_5;
+	public void setDesc5(String desc5) {
+		this.desc5 = desc5;
 	}
 
-	public String getDesc_6() {
-		return desc_6;
+	public String getDesc6() {
+		return desc6;
 	}
 
-	public void setDesc_6(String desc_6) {
-		this.desc_6 = desc_6;
+	public void setDesc6(String desc6) {
+		this.desc6 = desc6;
 	}
 
 	public Double getDiferen() {
@@ -396,36 +392,36 @@ public class Fornecedor implements Serializable {
 		this.diferen = diferen;
 	}
 
-	public Double getRep_1() {
-		return rep_1;
+	public Double getRep1() {
+		return rep1;
 	}
 
-	public void setRep_1(Double rep_1) {
-		this.rep_1 = rep_1;
+	public void setRep1(Double rep1) {
+		this.rep1 = rep1;
 	}
 
-	public Double getRep_2() {
-		return rep_2;
+	public Double getRep2() {
+		return rep2;
 	}
 
-	public void setRep_2(Double rep_2) {
-		this.rep_2 = rep_2;
+	public void setRep2(Double rep2) {
+		this.rep2 = rep2;
 	}
 
-	public Double getRep_3() {
-		return rep_3;
+	public Double getRep3() {
+		return rep3;
 	}
 
-	public void setRep_3(Double rep_3) {
-		this.rep_3 = rep_3;
+	public void setRep3(Double rep3) {
+		this.rep3 = rep3;
 	}
 
-	public Double getRep_4() {
-		return rep_4;
+	public Double getRep4() {
+		return rep4;
 	}
 
-	public void setRep_4(Double rep_4) {
-		this.rep_4 = rep_4;
+	public void setRep4(Double rep4) {
+		this.rep4 = rep4;
 	}
 
 	public String getObs() {
@@ -436,12 +432,12 @@ public class Fornecedor implements Serializable {
 		this.obs = obs;
 	}
 
-	public String getPlan_obs() {
-		return plan_obs;
+	public String getPlanObs() {
+		return planObs;
 	}
 
-	public void setPlan_obs(String plan_obs) {
-		this.plan_obs = plan_obs;
+	public void setPlanObs(String planObs) {
+		this.planObs = planObs;
 	}
 
 	public boolean isBloq() {
@@ -452,36 +448,36 @@ public class Fornecedor implements Serializable {
 		this.bloq = bloq;
 	}
 
-	public String getCrd_icms() {
-		return crd_icms;
+	public String getCrdIcms() {
+		return crdIcms;
 	}
 
-	public void setCrd_icms(String crd_icms) {
-		this.crd_icms = crd_icms;
+	public void setCrdIcms(String crdIcms) {
+		this.crdIcms = crdIcms;
 	}
 
-	public Double getPc_cr_icms_1() {
-		return pc_cr_icms_1;
+	public Double getPcCrIcms1() {
+		return pcCrIcms1;
 	}
 
-	public void setPc_cr_icms_1(Double pc_cr_icms_1) {
-		this.pc_cr_icms_1 = pc_cr_icms_1;
+	public void setPcCrIcms1(Double pcCrIcms1) {
+		this.pcCrIcms1 = pcCrIcms1;
 	}
 
-	public Double getPc_cr_icms_2() {
-		return pc_cr_icms_2;
+	public Double getPcCrIcms2() {
+		return pcCrIcms2;
 	}
 
-	public void setPc_cr_icms_2(Double pc_cr_icms_2) {
-		this.pc_cr_icms_2 = pc_cr_icms_2;
+	public void setPcCrIcms2(Double pcCrIcms2) {
+		this.pcCrIcms2 = pcCrIcms2;
 	}
 
-	public Double getPc_cr_icms_3() {
-		return pc_cr_icms_3;
+	public Double getPcCrIcms3() {
+		return pcCrIcms3;
 	}
 
-	public void setPc_cr_icms_3(Double pc_cr_icms_3) {
-		this.pc_cr_icms_3 = pc_cr_icms_3;
+	public void setPcCrIcms3(Double pcCrIcms3) {
+		this.pcCrIcms3 = pcCrIcms3;
 	}
 
 	public UFD getFornecUfd() {
@@ -503,5 +499,11 @@ public class Fornecedor implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+	public Long getId() {
+		return id;
+	}
+	
+
 
 }

@@ -21,10 +21,11 @@ public class Cor implements Serializable {
 	private Long id;
 
 	@Column(nullable = false)
-	private String desc;
-
+	private String descr;
+	
 	@Column(nullable = false)
 	private String obs;
+
 
 	@ManyToOne
 	@JoinColumn(name = "cor_emp", nullable = false)
@@ -33,19 +34,19 @@ public class Cor implements Serializable {
 	public Cor() {
 	}
 
-	public Cor(Long id, String desc, String obs, Empresa corEmp) {
+	public Cor(Long id, String descr, String obs, Empresa corEmp) {
 		this.id = id;
-		this.desc = desc;
+		this.descr = descr;
 		this.obs = obs;
 		this.corEmp = corEmp;
 	}
 
-	public String getDesc() {
-		return desc;
+	public String getDescr() {
+		return descr;
 	}
 
-	public void setDesc(String desc) {
-		this.desc = desc;
+	public void setDescr(String descr) {
+		this.descr = descr;
 	}
 
 	public String getObs() {
@@ -71,5 +72,7 @@ public class Cor implements Serializable {
 	public Long getId() {
 		return id;
 	}
-
+	
+	
+	
 }
