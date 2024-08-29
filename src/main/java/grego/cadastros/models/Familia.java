@@ -34,6 +34,46 @@ public class Familia implements Serializable {
 	public Familia() {
 	}
 
+	public Familia(Long id, String descr, String obs, Empresa famEmp) {
+		this.id = id;
+		this.descr = descr;
+		this.obs = obs;
+		this.famEmp = famEmp;
+	}
+
+	public String getDescr() {
+		return descr;
+	}
+
+	public void setDescr(String descr) {
+		this.descr = descr;
+	}
+
+	public String getObs() {
+		return obs;
+	}
+
+	public void setObs(String obs) {
+		this.obs = obs;
+	}
+
+	public Empresa getFamEmp() {
+		return famEmp;
+	}
+
+	public void setFamEmp(Empresa famEmp) {
+		this.famEmp = famEmp;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public Long getId() {
+		return id;
+	}
+	
+	
 	
 
 }
