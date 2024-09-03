@@ -121,7 +121,7 @@ public class Fornecedor implements Serializable {
 	private boolean bloq;
 
 	@Column(nullable = false)
-	@Length(max = 1, min = 1)
+	//@Length(max = 1, min = 1)
 	private String crdIcms;
 
 	@Column(nullable = false)
