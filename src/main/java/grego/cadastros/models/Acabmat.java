@@ -11,33 +11,33 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
-@Entity 
+@Entity
 @Table(name = "TB0007_ACABMAT")
-public class Acabmat implements Serializable{
-	private static final long serialVersionUID = 1L; 
-	
+public class Acabmat implements Serializable {
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id; 
-	
+	private Long id;
+
 	@Column(nullable = false)
 	private String descr;
-	
+
 	@Column(nullable = false)
 	private String obs;
 
 	@ManyToOne
-	@JoinColumn(name="acabmat_emp", nullable = false)
-	private Empresa acbmatEmp; 
-	
+	@JoinColumn(name = "acabmat_emp", nullable = false)
+	private Empresa acabmatEmp;
+
 	public Acabmat() {
 	}
 
-	public Acabmat(Long id, String descr, String obs, Empresa acbmatEmp) {
+	public Acabmat(Long id, String descr, String obs, Empresa acabmatEmp) {
 		this.id = id;
 		this.descr = descr;
 		this.obs = obs;
-		this.acbmatEmp = acbmatEmp;
+		this.acabmatEmp = acabmatEmp;
 	}
 
 	public String getDescr() {
@@ -56,12 +56,12 @@ public class Acabmat implements Serializable{
 		this.obs = obs;
 	}
 
-	public Empresa getAcbmatEmp() {
-		return acbmatEmp;
+	public Empresa getAcabmatEmp() {
+		return acabmatEmp;
 	}
 
-	public void setAcbmatEmp(Empresa acbmatEmp) {
-		this.acbmatEmp = acbmatEmp;
+	public void setAcabmatEmp(Empresa acabmatEmp) {
+		this.acabmatEmp = acabmatEmp;
 	}
 
 	public static long getSerialversionuid() {
@@ -72,7 +72,4 @@ public class Acabmat implements Serializable{
 		return id;
 	}
 
-	
-	
 }
-

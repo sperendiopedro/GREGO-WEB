@@ -11,8 +11,6 @@ import grego.cadastros.models.Familia;
 import grego.cadastros.models.UFD;
 
 public interface FamiliaRepository extends JpaRepository<Familia, Long> {
-	
 	@Query("SELECT u FROM Familia u WHERE u.descr = :descr AND u.famEmp = :empresa")
-	Optional<Familia> findBySiglaAndUfdEmp(@Param("descr") String sigla, @Param("empresa") Empresa empresa);
-
+	Optional<Familia> findBySiglaAndUfdEmp(@Param("descr") String descr, @Param("empresa") Empresa empresa);
 }

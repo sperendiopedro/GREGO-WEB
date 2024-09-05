@@ -80,7 +80,7 @@ public class Empresa implements Serializable{
 	@JsonIgnore
 	private Set<Produto> empProd;
 
-	@OneToMany(mappedBy = "acbmatEmp")
+	@OneToMany(mappedBy = "acabmatEmp")
 	@JsonIgnore
 	private Set<Acabmat> empAcabmat;
 

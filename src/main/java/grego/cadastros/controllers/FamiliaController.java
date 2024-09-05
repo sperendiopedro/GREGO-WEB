@@ -46,7 +46,10 @@ public class FamiliaController {
 		}else {
 			return new ResponseEntity<>("Objeto empresa é obrigatório!", HttpStatus.BAD_REQUEST);
 		}
-
+		Optional<Familia> optFam = famRepo.findBySiglaAndUfdEmp(fam.getDescr(), fam.getFamEmp());
+		if(optFam.isPresent()) {
+			return new ResponseEntity<>("Objeto Familia já existe no banco de dados!", HttpStatus.CONFLICT); 
+ 		}
 		famRepo.saveAndFlush(fam); 
 		return new ResponseEntity<>("Familia cadastrada", HttpStatus.OK); 
 	}
