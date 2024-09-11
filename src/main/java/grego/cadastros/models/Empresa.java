@@ -32,7 +32,7 @@ public class Empresa implements Serializable{
 	private String nomeFant;
 
 	@Column(nullable = false)
-	private String end;
+	private String endereco;
 
 	@Column(nullable = false)
 	private String bairro;
@@ -91,7 +91,7 @@ public class Empresa implements Serializable{
 	public Empresa() {
 	}
 
-	public Empresa(Long id, String razSoc, String nomeFant, String end, String bairro, String cep, String cnpj,
+	public Empresa(Long id, String razSoc, String nomeFant, String endereco, String bairro, String cep, String cnpj,
 			String inscrMun, String inscrEst, String telefone, String email, Double relSoc, Double nrCupom, String obs,
 			Set<UFD> empUfd, Set<Fornecedor> empFornec, Set<Familia> empFam, Set<Produto> empProd,
 			Set<Acabmat> empAcabmat, Set<Cor> empCor) {
@@ -99,7 +99,7 @@ public class Empresa implements Serializable{
 		this.id = id;
 		this.razSoc = razSoc;
 		this.nomeFant = nomeFant;
-		this.end = end;
+		this.endereco = endereco;
 		this.bairro = bairro;
 		this.cep = cep;
 		this.cnpj = cnpj;
@@ -139,11 +139,11 @@ public class Empresa implements Serializable{
 	}
 
 	public String getEnd() {
-		return end;
+		return endereco;
 	}
 
-	public void setEnd(String end) {
-		this.end = end;
+	public void setEnd(String endereco) {
+		this.endereco = endereco;
 	}
 
 	public String getBairro() {

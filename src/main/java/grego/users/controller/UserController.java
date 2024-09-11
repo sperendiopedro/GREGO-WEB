@@ -38,6 +38,7 @@ public class UserController {
 		return userRepo.findAll();
 	}
 
+	
 	@PostMapping("/register")
 	public ResponseEntity<String> register(@RequestBody User user) {
 		Optional<User> optUser = userRepo.findByEmail(user.getEmail());

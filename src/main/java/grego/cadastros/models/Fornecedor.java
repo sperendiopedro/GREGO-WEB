@@ -31,7 +31,7 @@ public class Fornecedor implements Serializable {
 	private String nomeFant;
 
 	@Column(nullable = false)
-	private String end;
+	private String endereco;
 
 	@Column(nullable = false)
 	private String bairro;
@@ -144,7 +144,7 @@ public class Fornecedor implements Serializable {
 	public Fornecedor() {
 	}
 
-	public Fornecedor(Long id, String razSoc, String nomeFant, String end, String bairro, String cep, String municipio,
+	public Fornecedor(Long id, String razSoc, String nomeFant, String endereco, String bairro, String cep, String municipio,
 			String contato, String dep, Double tipoJF, String cnpj, String inscrEst, String inscrMun, String telefone1,
 			String telefone2, String telefone3, String email1, String email2, String email3, String desc1, String desc2,
 			String desc3, String desc4, String desc5, String desc6, Double diferen, Double rep1, Double rep2,
@@ -154,7 +154,7 @@ public class Fornecedor implements Serializable {
 		this.id = id;
 		this.razSoc = razSoc;
 		this.nomeFant = nomeFant;
-		this.end = end;
+		this.endereco = endereco;
 		this.bairro = bairro;
 		this.cep = cep;
 		this.municipio = municipio;
@@ -209,11 +209,11 @@ public class Fornecedor implements Serializable {
 	}
 
 	public String getEnd() {
-		return end;
+		return endereco;
 	}
 
-	public void setEnd(String end) {
-		this.end = end;
+	public void setEnd(String endereco) {
+		this.endereco = endereco;
 	}
 
 	public String getBairro() {
