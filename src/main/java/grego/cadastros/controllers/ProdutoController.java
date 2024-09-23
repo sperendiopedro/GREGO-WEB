@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,6 +20,7 @@ import grego.cadastros.repositories.ProdutoRepository;
 
 @RestController
 @RequestMapping("/produto")
+@CrossOrigin(origins = "*")
 public class ProdutoController {
 	
 	@Autowired
@@ -44,7 +46,7 @@ public class ProdutoController {
 				return new ResponseEntity<>("Objeto empresa é obrigatório!", HttpStatus.BAD_REQUEST); 
 			}
 			Optional<Produto> optProd = prodRepo.findByDescAndProdEmp(prod.getDescr(), prod.getProdEmp()); 
-			if(!optProd.isPresent()) {
+			if(optProd.isPresent()) {
 				return new ResponseEntity<>("Objeto produto já existe no banco de dados!", HttpStatus.CONFLICT); 
 			}
 		prodRepo.saveAndFlush(prod); 	
