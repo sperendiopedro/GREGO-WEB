@@ -35,8 +35,8 @@ public class AcabmatController {
 	
 	@PostMapping("/register")
 	public ResponseEntity<String> register(@RequestBody Acabmat acabmat){
-		if(acabmat.getAcabmatEmp() != null && acabmat.getAcabmatEmp().getId() != null) {
-			Optional<Empresa> optEmp = empRepo.findById(acabmat.getAcabmatEmp().getId()); 
+		if(acabmat.getAcabmatEmp() != null && acabmat.getAcabmatEmp().getCdEmp() != null) {
+			Optional<Empresa> optEmp = empRepo.findById(acabmat.getAcabmatEmp().getCdEmp()); 
 			if(!optEmp.isPresent()) {
 				return new ResponseEntity<>("Empresa inexistente!", HttpStatus.BAD_REQUEST); 
 			}

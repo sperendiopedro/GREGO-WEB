@@ -36,8 +36,8 @@ public class ProdutoController {
  	
 	@PostMapping("/register")
 	public ResponseEntity<String> registerProd(@RequestBody Produto prod){ 
-		if(prod.getProdEmp() != null && prod.getProdEmp().getId() != null) {
-			Optional<Empresa> optEmp = empRepo.findById(prod.getProdEmp().getId()); 
+		if(prod.getProdEmp() != null && prod.getProdEmp().getCdEmp() != null) {
+			Optional<Empresa> optEmp = empRepo.findById(prod.getProdEmp().getCdEmp()); 
 			if(!optEmp.isPresent()) {
 				return new ResponseEntity<>("Empresa não existe!", HttpStatus.BAD_REQUEST);
 			}

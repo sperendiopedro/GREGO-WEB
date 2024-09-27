@@ -34,8 +34,8 @@ public class CorController {
 	
 	@PostMapping("/register")
 	public ResponseEntity<String> registerCor(@RequestBody Cor cor){
-		if(cor.getCorEmp() != null && cor.getCorEmp().getId() != null) {
-			Optional<Empresa> optEmp = empRepo.findById(cor.getCorEmp().getId());
+		if(cor.getCorEmp() != null && cor.getCorEmp().getCdEmp() != null) {
+			Optional<Empresa> optEmp = empRepo.findById(cor.getCorEmp().getCdEmp());
 			if(!optEmp.isPresent()) {
 				return new ResponseEntity<>("Objeto empresa inexistente!", HttpStatus.BAD_REQUEST); 
 			}

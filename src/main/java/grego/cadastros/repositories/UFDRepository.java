@@ -11,8 +11,5 @@ import grego.cadastros.models.Empresa;
 import grego.cadastros.models.UFD;
 
 public interface UFDRepository extends JpaRepository<UFD, Long> {
-	
-	@Query("SELECT u FROM UFD u WHERE u.sigla = :sigla AND u.ufdEmp = :empresa")
-	Optional<UFD> findBySiglaAndUfdEmp(@Param("sigla") String sigla, @Param("empresa") Empresa empresa);
-
+	Optional<UFD> findBySigla(String sigla); 
 }

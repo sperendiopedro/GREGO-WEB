@@ -37,8 +37,8 @@ public class FamiliaController {
 	
 	@PostMapping("/register")
 	public ResponseEntity<String> insertFam(@RequestBody Familia fam){
-		if(fam.getFamEmp() != null && fam.getFamEmp().getId() != null) {
-			Optional<Empresa> optEmp = empRepo.findById(fam.getFamEmp().getId()); 
+		if(fam.getFamEmp() != null && fam.getFamEmp().getCdEmp() != null) {
+			Optional<Empresa> optEmp = empRepo.findById(fam.getFamEmp().getCdEmp()); 
 			if(!optEmp.isPresent()) {
 				return new ResponseEntity<>("Empresa não existe!", HttpStatus.BAD_REQUEST); 
 			}

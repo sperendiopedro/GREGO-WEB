@@ -22,8 +22,7 @@ public class Empresa implements Serializable{
 	private static final long serialVersionUID = 1L; 
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long cdEmp;
 
 	@Column(nullable = false)
 	private String razSoc;
@@ -64,10 +63,6 @@ public class Empresa implements Serializable{
 	@Column(nullable = false)
 	private String obs;
 
-	@OneToMany(mappedBy = "ufdEmp")
-	@JsonIgnore
-	private Set<UFD> empUfd;
-
 	@OneToMany(mappedBy = "fornecEmp")
 	@JsonIgnore
 	private Set<Fornecedor> empFornec;
@@ -91,12 +86,12 @@ public class Empresa implements Serializable{
 	public Empresa() {
 	}
 
-	public Empresa(Long id, String razSoc, String nomeFant, String endereco, String bairro, String cep, String cnpj,
+	public Empresa(Long cdEmp, String razSoc, String nomeFant, String endereco, String bairro, String cep, String cnpj,
 			String inscrMun, String inscrEst, String telefone, String email, Double relSoc, Double nrCupom, String obs,
-			Set<UFD> empUfd, Set<Fornecedor> empFornec, Set<Familia> empFam, Set<Produto> empProd,
+			Set<Fornecedor> empFornec, Set<Familia> empFam, Set<Produto> empProd,
 			Set<Acabmat> empAcabmat, Set<Cor> empCor) {
 		super();
-		this.id = id;
+		this.cdEmp = cdEmp;
 		this.razSoc = razSoc;
 		this.nomeFant = nomeFant;
 		this.endereco = endereco;
@@ -110,7 +105,6 @@ public class Empresa implements Serializable{
 		this.relSoc = relSoc;
 		this.nrCupom = nrCupom;
 		this.obs = obs;
-		this.empUfd = empUfd;
 		this.empFornec = empFornec;
 		this.empFam = empFam;
 		this.empProd = empProd;
@@ -118,10 +112,15 @@ public class Empresa implements Serializable{
 		this.empCor = empCor;
 	}
 
-	public Long getId() {
-		return id;
+	public Long getCdEmp() {
+		return cdEmp;
 	}
-
+	
+	public void setCdEmp(Long cdEmp) {
+		this.cdEmp = cdEmp; 
+	}
+	
+	
 	public String getRazSoc() {
 		return razSoc;
 	}
@@ -224,14 +223,6 @@ public class Empresa implements Serializable{
 
 	public void setObs(String obs) {
 		this.obs = obs;
-	}
-
-	public Set<UFD> getEmpUfd() {
-		return empUfd;
-	}
-
-	public void setEmpUfd(Set<UFD> empUfd) {
-		this.empUfd = empUfd;
 	}
 
 	public Set<Fornecedor> getEmpFornec() {

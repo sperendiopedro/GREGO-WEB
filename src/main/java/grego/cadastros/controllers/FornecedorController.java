@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,8 +40,8 @@ public class FornecedorController {
 
 	@PostMapping(value = "/saveFornec")
 	public ResponseEntity<String> register(@RequestBody Fornecedor fornec) {
-		if (fornec.getFornecEmp() != null && fornec.getFornecUfd().getId() != null) {
-			Optional<Empresa> optEmp = empRepo.findById(fornec.getFornecEmp().getId());
+		if (fornec.getFornecEmp() != null && fornec.getFornecEmp().getCdEmp() != null) {
+			Optional<Empresa> optEmp = empRepo.findById(fornec.getFornecEmp().getCdEmp());
 			if (!optEmp.isPresent()) {
 				return new ResponseEntity<>("Empresa inexistente!", HttpStatus.BAD_REQUEST);
 			}
@@ -51,8 +50,8 @@ public class FornecedorController {
 			return new ResponseEntity<>("Empresa é obrigatório", HttpStatus.BAD_REQUEST);
 		}
 
-		if (fornec.getFornecUfd() != null && fornec.getFornecUfd().getId() != null) {
-			Optional<UFD> optUfd = ufdRepo.findById(fornec.getFornecUfd().getId());
+		if (fornec.getFornecUfd() != null && fornec.getFornecUfd().getCdUfd() != null) {
+			Optional<UFD> optUfd = ufdRepo.findById(fornec.getFornecUfd().getCdUfd());
 			if (!optUfd.isPresent()) {
 				return new ResponseEntity<>("UFD inexistente", HttpStatus.BAD_REQUEST);
 			}

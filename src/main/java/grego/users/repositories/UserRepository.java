@@ -10,6 +10,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import grego.users.details.UserDetailsImpl;
 import grego.users.models.User;
 
-public interface UserRepository extends JpaRepository<User, UUID>{
+public interface UserRepository extends JpaRepository<User, Long>{
 	Optional<User> findByEmail(String email);
 }

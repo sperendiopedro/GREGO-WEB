@@ -56,4 +56,19 @@ public class UserController {
 			return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
+	
+	@PatchMapping("/passwordUpdate/{id}")
+	public ResponseEntity<String> updatePsswd(@PathVariable Long id, @RequestBody String newpsswd){
+		Optional<User> optUser = userRepo.findById(id); 
+		if(!optUser.isPresent()) {
+			return new ResponseEntity<>("Usuario não encontrado!", HttpStatus.NOT_FOUND); 
+		}
+		User user = optUser.get(); 
+		user.setPassword(passwdEncoder.encode(newpsswd)); 
+		userRepo.save(user); 
+		return new ResponseEntity<>("Senha alterada com sucesso!", HttpStatus.OK); 
+	}
+
+
+
 }

@@ -24,7 +24,7 @@ public class UFD implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long cdUfd;
 
 	@Column(nullable = false)
 	private String nome;
@@ -40,25 +40,24 @@ public class UFD implements Serializable {
 	@JsonIgnore
 	private Set<Fornecedor> ufdFornec;
 
-	@ManyToOne
-	@JoinColumn(name = "ufd_emp", nullable = false)
-	private Empresa ufdEmp;
-
 	public UFD() {
 	}
 
-	public UFD(Long id, String nome, @Length(min = 2, max = 2) String sigla, Double aliqIcms, Set<Fornecedor> ufdFornec,
+	public UFD(Long cdUfd, String nome, @Length(min = 2, max = 2) String sigla, Double aliqIcms, Set<Fornecedor> ufdFornec,
 			Empresa ufdEmp) {
-		this.id = id;
+		this.cdUfd = cdUfd;
 		this.nome = nome;
 		this.sigla = sigla;
 		this.aliqIcms = aliqIcms;
 		this.ufdFornec = ufdFornec;
-		this.ufdEmp = ufdEmp;
 	}
 
-	public Long getId() {
-		return id;
+	public Long getCdUfd() {
+		return cdUfd;
+	}
+	
+	public void setCdUfd(Long cdUfd){
+		this.cdUfd=cdUfd; 
 	}
 
 	public String getNome() {
@@ -91,14 +90,6 @@ public class UFD implements Serializable {
 
 	public void setUfdFornec(Set<Fornecedor> ufdFornec) {
 		this.ufdFornec = ufdFornec;
-	}
-
-	public Empresa getUfdEmp() {
-		return ufdEmp;
-	}
-
-	public void setUfdEmp(Empresa ufdEmp) {
-		this.ufdEmp = ufdEmp;
 	}
 
 	public static long getSerialversionuid() {

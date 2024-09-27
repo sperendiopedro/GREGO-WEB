@@ -6,13 +6,9 @@ import org.hibernate.validator.constraints.Length;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -21,8 +17,7 @@ public class Fornecedor implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long cdFor;
 
 	@Column(nullable = false)
 	private String razSoc;
@@ -121,7 +116,7 @@ public class Fornecedor implements Serializable {
 	private boolean bloq;
 
 	@Column(nullable = false)
-	//@Length(max = 1, min = 1)
+	@Length(max = 1, min = 1)
 	private String crdIcms;
 
 	@Column(nullable = false)
@@ -144,14 +139,14 @@ public class Fornecedor implements Serializable {
 	public Fornecedor() {
 	}
 
-	public Fornecedor(Long id, String razSoc, String nomeFant, String endereco, String bairro, String cep, String municipio,
-			String contato, String dep, Double tipoJF, String cnpj, String inscrEst, String inscrMun, String telefone1,
-			String telefone2, String telefone3, String email1, String email2, String email3, String desc1, String desc2,
-			String desc3, String desc4, String desc5, String desc6, Double diferen, Double rep1, Double rep2,
-			Double rep3, Double rep4, String obs, String planObs, boolean bloq,
+	public Fornecedor(Long cdFor, String razSoc, String nomeFant, String endereco, String bairro, String cep,
+			String municipio, String contato, String dep, Double tipoJF, String cnpj, String inscrEst, String inscrMun,
+			String telefone1, String telefone2, String telefone3, String email1, String email2, String email3,
+			String desc1, String desc2, String desc3, String desc4, String desc5, String desc6, Double diferen,
+			Double rep1, Double rep2, Double rep3, Double rep4, String obs, String planObs, boolean bloq,
 			@Length(max = 1, min = 1) String crdIcms, Double pcCrIcms1, Double pcCrIcms2, Double pcCrIcms3,
 			UFD fornecUfd, Empresa fornecEmp) {
-		this.id = id;
+		this.cdFor = cdFor;
 		this.razSoc = razSoc;
 		this.nomeFant = nomeFant;
 		this.endereco = endereco;
@@ -208,11 +203,11 @@ public class Fornecedor implements Serializable {
 		this.nomeFant = nomeFant;
 	}
 
-	public String getEnd() {
+	public String getEndereco() {
 		return endereco;
 	}
 
-	public void setEnd(String endereco) {
+	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
 
@@ -501,9 +496,11 @@ public class Fornecedor implements Serializable {
 	}
 
 	public Long getId() {
-		return id;
+		return cdFor;
 	}
-	
 
+	public void setCdFor(Long cdFor) {
+		this.cdFor = cdFor;
+	}
 
 }

@@ -3,6 +3,10 @@ package grego.migration.files;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,33 +29,49 @@ public class FileController {
 
 	@PostMapping("upload")
 	public ResponseEntity<String> uploadImage(@RequestParam("file") MultipartFile file) {
-		if (file.isEmpty()) {
-			return new ResponseEntity<>("Arquivo vazio!", HttpStatus.NOT_FOUND);
-		}
-		try (BufferedReader br = new BufferedReader(new InputStreamReader(file.getInputStream()))) {
-			String line = br.readLine();
-			while (line != null) {
-				String[] fields = line.split(";");
-					Empresa emp = new Empresa();
-					emp.setRazSoc(fields[0]);
-					emp.setNomeFant(fields[1]);
-					emp.setEndereco(fields[2]);
-					emp.setBairro(fields[3]);
-					emp.setCep(fields[4]);
-					emp.setCnpj(fields[5]);
-					emp.setInscrMun(fields[6]);
-					emp.setInscrEst(fields[8]);			
-					emp.setTelefone(fields[7]);
-					emp.setEmail(fields[8]);
-					emp.setRelSoc(Double.parseDouble(fields[9]));
-					emp.setNrCupom(Double.parseDouble(fields[10]));
-					emp.setObs(fields[11]);
-					empRepo.saveAndFlush(emp);
-					line = br.readLine();
-			}
-			return new ResponseEntity<>("Sucesso", HttpStatus.OK);
-		} catch (IOException e) {
-			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
-		}
+	    if (file.isEmpty()) {
+	        return new ResponseEntity<>("Arquivo vazio!", HttpStatus.NOT_FOUND);
+	    }
+
+	    List<Empresa> empList = new ArrayList<>();
+	    
+	    try (BufferedReader br = new BufferedReader(new InputStreamReader(file.getInputStream()))) {
+	        empList = br.lines().skip(1)
+	            .map(line -> line.trim().split(","))
+	            .map(fields -> {
+	                String cnpj = fields[6];
+	                if (empRepo.findByCnpj(cnpj) == null) {
+	                    Empresa emp = new Empresa(); 
+	                    emp.setCdEmp(Long.parseLong(fields[0]));
+	                    emp.setRazSoc(fields[1]);
+	                    emp.setNomeFant(fields[2]);
+	                    emp.setEndereco(fields[3]);
+	                    emp.setBairro(fields[4]);
+	                    emp.setCep(fields[5]);
+	                    emp.setCnpj(cnpj);
+	                    emp.setInscrMun(fields[7]);
+	                    emp.setInscrEst(fields[8]);
+	                    emp.setTelefone(fields[9]);
+	                    emp.setEmail(fields[10]);
+	                    emp.setRelSoc(Double.parseDouble(fields[11]));
+	                    emp.setNrCupom(Double.parseDouble(fields[12]));
+	                    emp.setObs(fields[13]); 
+	                    return emp; 
+	                } else {
+	                    return null; 
+	                }
+	            })
+	            .filter(Objects::nonNull)
+	            .collect(Collectors.toList());
+	        
+	        if (!empList.isEmpty()) {
+	            empRepo.saveAll(empList);
+	        }
+	        return new ResponseEntity<>("Sucesso", HttpStatus.OK);
+	    
+	    } catch(IOException e) {
+	        return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+	    }
 	}
 }
+
