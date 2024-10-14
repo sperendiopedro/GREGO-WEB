@@ -11,8 +11,8 @@ import grego.cadastros.models.Fornecedor;
 import grego.cadastros.models.UFD;
 
 public interface FornecRepository extends JpaRepository<Fornecedor, Long>{
-	
 	@Query("SELECT u FROM Fornecedor u WHERE u.cnpj = :cnpj AND u.fornecEmp = :empresa")
 	Optional<Fornecedor> findByCnpjAndFornecEmp(@Param("cnpj") String cnpj, @Param("empresa") Empresa empresa);
-
+	
+	Fornecedor findByCnpj(String cnpj); 
 }

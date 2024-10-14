@@ -17,6 +17,7 @@ public class Fornecedor implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@Column(nullable=false)
 	private Long cdFor;
 
 	@Column(nullable = false)
@@ -95,16 +96,20 @@ public class Fornecedor implements Serializable {
 	private Double diferen;
 
 	@Column(nullable = false)
-	private Double rep1;
+	@Length(max=2, min=1)
+	private String rep1;
 
 	@Column(nullable = true)
-	private Double rep2;
+	@Length(max=2, min=1)
+	private String rep2;
 
 	@Column(nullable = true)
-	private Double rep3;
+	@Length(max=2, min=1)
+	private String rep3;
 
 	@Column(nullable = true)
-	private Double rep4;
+	@Length(max=2, min=1)
+	private String rep4;
 
 	@Column(nullable = false)
 	private String obs;
@@ -143,7 +148,7 @@ public class Fornecedor implements Serializable {
 			String municipio, String contato, String dep, Double tipoJF, String cnpj, String inscrEst, String inscrMun,
 			String telefone1, String telefone2, String telefone3, String email1, String email2, String email3,
 			String desc1, String desc2, String desc3, String desc4, String desc5, String desc6, Double diferen,
-			Double rep1, Double rep2, Double rep3, Double rep4, String obs, String planObs, boolean bloq,
+			String rep1, String rep2, String rep3, String rep4, String obs, String planObs, boolean bloq,
 			@Length(max = 1, min = 1) String crdIcms, Double pcCrIcms1, Double pcCrIcms2, Double pcCrIcms3,
 			UFD fornecUfd, Empresa fornecEmp) {
 		this.cdFor = cdFor;
@@ -387,35 +392,35 @@ public class Fornecedor implements Serializable {
 		this.diferen = diferen;
 	}
 
-	public Double getRep1() {
+	public String getRep1() {
 		return rep1;
 	}
 
-	public void setRep1(Double rep1) {
+	public void setRep1(String rep1) {
 		this.rep1 = rep1;
 	}
 
-	public Double getRep2() {
+	public String getRep2() {
 		return rep2;
 	}
 
-	public void setRep2(Double rep2) {
+	public void setRep2(String rep2) {
 		this.rep2 = rep2;
 	}
 
-	public Double getRep3() {
+	public String getRep3() {
 		return rep3;
 	}
 
-	public void setRep3(Double rep3) {
+	public void setRep3(String rep3) {
 		this.rep3 = rep3;
 	}
 
-	public Double getRep4() {
+	public String getRep4() {
 		return rep4;
 	}
 
-	public void setRep4(Double rep4) {
+	public void setRep4(String rep4) {
 		this.rep4 = rep4;
 	}
 
