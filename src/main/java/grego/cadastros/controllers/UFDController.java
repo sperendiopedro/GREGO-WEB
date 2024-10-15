@@ -27,7 +27,6 @@ import grego.cadastros.repositories.UFDRepository;
 
 @RestController
 @RequestMapping("/ufd")
-@CrossOrigin(origins = "*")
 public class UFDController {
 
 	@Autowired

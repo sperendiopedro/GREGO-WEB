@@ -1,9 +1,14 @@
 package grego.users.details;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import javax.management.RuntimeErrorException;
+
+import org.springframework.security.authorization.AuthorizationDeniedException;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import grego.users.models.User;
@@ -20,7 +25,18 @@ public class UserDetailsImpl implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(() -> "read"); 
+    	List<GrantedAuthority> authorities = new ArrayList<>();
+    try {	
+    	if("USER".equals(user.getUserRole())) { 
+    		authorities.add(new SimpleGrantedAuthority("ROlE_READ"));
+    	}else if("ADMIN".equals(user.getUserRole())) {
+    		authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+    	}
+    }catch(Exception e) {
+    	throw new RuntimeException("Failed to set authorities", e); 
+    }
+    	return authorities; 
+    	
     }
 
     @Override

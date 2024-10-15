@@ -30,7 +30,6 @@ import grego.cadastros.repositories.UFDRepository;
 
 @RestController
 @RequestMapping("fornec")
-@CrossOrigin(origins = "*")
 public class FornecedorController {
 
 	@Autowired

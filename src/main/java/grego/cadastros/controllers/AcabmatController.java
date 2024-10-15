@@ -20,7 +20,6 @@ import grego.cadastros.repositories.EmpresaRepository;
 
 @RestController
 @RequestMapping("/acabmat")
-@CrossOrigin(origins="*")
 public class AcabmatController {
 	@Autowired
 	private AcabmatRepository acabmatRepo;

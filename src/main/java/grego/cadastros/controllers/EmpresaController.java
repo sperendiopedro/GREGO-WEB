@@ -29,7 +29,6 @@ import grego.cadastros.repositories.EmpresaRepository;
 
 @RestController
 @RequestMapping("/empresa")
-@CrossOrigin(origins = "*")
 public class EmpresaController {
 
 	@Autowired

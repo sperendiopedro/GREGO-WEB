@@ -20,7 +20,6 @@ import grego.cadastros.repositories.ProdutoRepository;
 
 @RestController
 @RequestMapping("/produto")
-@CrossOrigin(origins = "*")
 public class ProdutoController {
 	
 	@Autowired

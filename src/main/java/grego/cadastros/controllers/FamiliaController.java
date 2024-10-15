@@ -20,7 +20,6 @@ import grego.cadastros.repositories.FamiliaRepository;
 
 @RestController
 @RequestMapping("/familia")
-@CrossOrigin(origins = "*")
 public class FamiliaController {
 
 	@Autowired

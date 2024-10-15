@@ -14,7 +14,6 @@ import grego.users.service.AuthenticationService;
 
 @RestController
 @RequestMapping("user")
-@CrossOrigin(origins="*")
 public class AuthenticationController {
 	
 	@Autowired

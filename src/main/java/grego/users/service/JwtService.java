@@ -38,7 +38,7 @@ public class JwtService {
 						.collect(Collectors.joining(""));
 		//BUILD DA TOKEN
 		var claims = JwtClaimsSet.builder()
-				     .issuer("teste")
+				     .issuer("GREGO-HTTPS")
 				     .issuedAt(now)
 				     .expiresAt(now.plusSeconds(expiry))
 				     .subject(authentication.getName())
